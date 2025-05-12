@@ -1,0 +1,1077 @@
+<?xml version="1.0" encoding="utf-8"?>
+<annotations>
+  <version>1.1</version>
+  <meta>
+    <job>
+      <id>2309695</id>
+      <size>54</size>
+      <mode>interpolation</mode>
+      <overlap>5</overlap>
+      <bugtracker></bugtracker>
+      <created>2025-03-31 20:28:06.003952+00:00</created>
+      <updated>2025-03-31 20:56:05.994743+00:00</updated>
+      <subset>default</subset>
+      <start_frame>0</start_frame>
+      <stop_frame>53</stop_frame>
+      <frame_filter></frame_filter>
+      <segments>
+        <segment>
+          <id>2312106</id>
+          <start>0</start>
+          <stop>53</stop>
+          <url>https://app.cvat.ai/api/jobs/2309695</url>
+        </segment>
+      </segments>
+      <owner>
+        <username>nik86</username>
+        <email>nik.krnjovsek@gmail.com</email>
+      </owner>
+      <assignee></assignee>
+      <labels>
+        <label>
+          <name>osebe</name>
+          <color>#7548fd</color>
+          <type>any</type>
+          <attributes>
+            <attribute>
+              <name>blizina</name>
+              <mutable>True</mutable>
+              <input_type>select</input_type>
+              <default_value>zelo_blizu</default_value>
+              <values>zelo_blizu
+blizu
+dalec</values>
+            </attribute>
+          </attributes>
+        </label>
+        <label>
+          <name>vozila</name>
+          <color>#3b308a</color>
+          <type>any</type>
+          <attributes>
+            <attribute>
+              <name>blizina</name>
+              <mutable>True</mutable>
+              <input_type>select</input_type>
+              <default_value>zelo_blizu</default_value>
+              <values>zelo_blizu
+blizu
+dalec</values>
+            </attribute>
+          </attributes>
+        </label>
+        <label>
+          <name>ostalo</name>
+          <color>#1e3186</color>
+          <type>any</type>
+          <attributes>
+            <attribute>
+              <name>blizina</name>
+              <mutable>True</mutable>
+              <input_type>select</input_type>
+              <default_value>zelo_blizu</default_value>
+              <values>zelo_blizu
+blizu
+dalec</values>
+            </attribute>
+          </attributes>
+        </label>
+      </labels>
+    </job>
+    <dumped>2025-03-31 21:01:17.668718+00:00</dumped>
+    <original_size>
+      <width>1920</width>
+      <height>1080</height>
+    </original_size>
+  </meta>
+  <track id="0" label="vozila" source="manual">
+    <polygon frame="0" keyframe="1" outside="0" occluded="0" points="1265.80,182.69;1244.15,215.17;1242.80,276.08;1244.15,335.63;1260.39,355.93;1272.57,355.93;1286.11,376.23;1329.41,384.35;1365.96,382.99;1379.49,355.93;1551.37,349.16;1568.96,359.99;1605.50,361.34;1644.75,370.81;1677.23,366.75;1688.06,354.57;1732.72,345.10;1738.14,318.03;1728.66,277.43;1702.95,267.96;1690.77,247.66;1646.11,242.24;1623.10,235.47;1575.73,196.23;1522.95,170.51;1448.51,162.39;1340.24,170.51" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+    <polygon frame="1" keyframe="1" outside="1" occluded="0" points="1265.80,182.69;1244.15,215.17;1242.80,276.08;1244.15,335.63;1260.39,355.93;1272.57,355.93;1286.11,376.23;1329.41,384.35;1365.96,382.99;1379.49,355.93;1551.37,349.16;1568.96,359.99;1605.50,361.34;1644.75,370.81;1677.23,366.75;1688.06,354.57;1732.72,345.10;1738.14,318.03;1728.66,277.43;1702.95,267.96;1690.77,247.66;1646.11,242.24;1623.10,235.47;1575.73,196.23;1522.95,170.51;1448.51,162.39;1340.24,170.51" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+  </track>
+  <track id="1" label="ostalo" source="manual">
+    <polygon frame="0" keyframe="1" outside="0" occluded="0" points="621.59,274.72;597.23,259.84;549.87,265.25;528.21,270.66;533.63,300.44;540.39,365.40;529.56,385.70;544.45,397.88;591.82,401.94;622.95,397.88;618.89,345.10" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+    <polygon frame="1" keyframe="1" outside="1" occluded="0" points="621.59,274.72;597.23,259.84;549.87,265.25;528.21,270.66;533.63,300.44;540.39,365.40;529.56,385.70;544.45,397.88;591.82,401.94;622.95,397.88;618.89,345.10" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+  </track>
+  <track id="2" label="ostalo" source="manual">
+    <polygon frame="0" keyframe="1" outside="0" occluded="0" points="451.07,366.75;438.89,381.64;438.89,389.76;464.60,391.11;510.62,397.88;520.09,397.88;520.09,322.09;518.74,277.43;502.50,261.19;453.78,263.90;430.77,266.60" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+    <polygon frame="1" keyframe="1" outside="1" occluded="0" points="451.07,366.75;438.89,381.64;438.89,389.76;464.60,391.11;510.62,397.88;520.09,397.88;520.09,322.09;518.74,277.43;502.50,261.19;453.78,263.90;430.77,266.60" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+  </track>
+  <track id="3" label="ostalo" source="manual">
+    <polygon frame="0" keyframe="1" outside="0" occluded="0" points="361.75,250.36;348.21,255.78;348.21,327.50;350.92,407.35;380.69,412.77;388.81,389.76;382.05,249.01" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+    <polygon frame="1" keyframe="1" outside="1" occluded="0" points="361.75,250.36;348.21,255.78;348.21,327.50;350.92,407.35;380.69,412.77;388.81,389.76;382.05,249.01" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+  </track>
+  <track id="4" label="ostalo" source="manual">
+    <polygon frame="1" keyframe="1" outside="0" occluded="0" points="419.94,305.85;392.87,305.85;398.29,336.98;409.11,381.64;409.11,415.47;399.64,429.01;405.05,445.25;441.59,446.60;495.73,446.60;495.73,334.27;505.20,315.32;455.13,303.14" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+    <polygon frame="2" keyframe="1" outside="1" occluded="0" points="419.94,305.85;392.87,305.85;398.29,336.98;409.11,381.64;409.11,415.47;399.64,429.01;405.05,445.25;441.59,446.60;495.73,446.60;495.73,334.27;505.20,315.32;455.13,303.14" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+  </track>
+  <track id="5" label="ostalo" source="manual">
+    <polygon frame="1" keyframe="1" outside="0" occluded="0" points="291.37,295.02;285.96,309.91;296.78,335.63;303.55,411.41;294.08,430.36;296.78,438.48;354.98,447.96;386.11,446.60;391.52,353.22;390.17,304.50;344.15,300.44" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+    <polygon frame="2" keyframe="1" outside="1" occluded="0" points="291.37,295.02;285.96,309.91;296.78,335.63;303.55,411.41;294.08,430.36;296.78,438.48;354.98,447.96;386.11,446.60;391.52,353.22;390.17,304.50;344.15,300.44" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+  </track>
+  <track id="6" label="ostalo" source="manual">
+    <polygon frame="1" keyframe="1" outside="0" occluded="0" points="202.05,284.20;177.69,285.55;187.16,407.35;188.51,468.26;226.41,465.55;219.64,282.84" z_order="0">
+      <attribute name="blizina">zelo_blizu</attribute>
+    </polygon>
+    <polygon frame="2" keyframe="1" outside="1" occluded="0" points="202.05,284.20;177.69,285.55;187.16,407.35;188.51,468.26;226.41,465.55;219.64,282.84" z_order="0">
+      <attribute name="blizina">zelo_blizu</attribute>
+    </polygon>
+  </track>
+  <track id="7" label="ostalo" source="manual">
+    <polygon frame="1" keyframe="1" outside="0" occluded="0" points="114.08,273.37;101.90,430.36;131.67,434.42;185.81,439.84;174.98,281.49;216.93,285.55;227.76,442.54;254.83,430.36;226.41,120.44;334.68,6.75;81.59,5.40;89.72,41.94;0.39,41.94;4.45,64.95;101.90,64.95;118.14,190.81" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+    <polygon frame="2" keyframe="1" outside="1" occluded="0" points="114.08,273.37;101.90,430.36;131.67,434.42;185.81,439.84;174.98,281.49;216.93,285.55;227.76,442.54;254.83,430.36;226.41,120.44;334.68,6.75;81.59,5.40;89.72,41.94;0.39,41.94;4.45,64.95;101.90,64.95;118.14,190.81" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+  </track>
+  <track id="8" label="vozila" source="manual">
+    <polygon frame="1" keyframe="1" outside="0" occluded="0" points="1185.96,235.47;1168.36,315.32;1168.36,393.82;1191.37,411.41;1219.79,433.07;1249.56,442.54;1298.29,437.13;1322.65,412.77;1541.90,422.24;1602.80,430.36;1621.75,411.41;1666.41,395.17;1665.05,334.27;1616.33,304.50;1559.49,288.26;1498.59,242.24;1428.21,216.53;1314.53,208.41;1245.50,217.88" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+    <polygon frame="2" keyframe="1" outside="1" occluded="0" points="1185.96,235.47;1168.36,315.32;1168.36,393.82;1191.37,411.41;1219.79,433.07;1249.56,442.54;1298.29,437.13;1322.65,412.77;1541.90,422.24;1602.80,430.36;1621.75,411.41;1666.41,395.17;1665.05,334.27;1616.33,304.50;1559.49,288.26;1498.59,242.24;1428.21,216.53;1314.53,208.41;1245.50,217.88" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+  </track>
+  <track id="9" label="ostalo" source="manual">
+    <polygon frame="2" keyframe="1" outside="0" occluded="0" points="103.25,293.67;82.95,293.67;88.36,495.32;138.44,489.91;124.90,293.67" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+    <polygon frame="3" keyframe="1" outside="1" occluded="0" points="103.25,293.67;82.95,293.67;88.36,495.32;138.44,489.91;124.90,293.67" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+  </track>
+  <track id="10" label="ostalo" source="manual">
+    <polygon frame="2" keyframe="1" outside="0" occluded="0" points="322.50,319.38;268.36,312.62;212.87,319.38;219.64,364.05;226.41,454.72;226.41,468.26;327.91,468.26;326.56,372.17" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+    <polygon frame="3" keyframe="1" outside="1" occluded="0" points="322.50,319.38;268.36,312.62;212.87,319.38;219.64,364.05;226.41,454.72;226.41,468.26;327.91,468.26;326.56,372.17" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+  </track>
+  <track id="11" label="ostalo" source="manual">
+    <polygon frame="2" keyframe="1" outside="0" occluded="0" points="341.44,438.48;344.15,469.61;445.66,472.32;451.07,327.50;411.82,316.68;326.56,320.74;340.09,351.87;354.98,434.42" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+    <polygon frame="3" keyframe="1" outside="1" occluded="0" points="341.44,438.48;344.15,469.61;445.66,472.32;451.07,327.50;411.82,316.68;326.56,320.74;340.09,351.87;354.98,434.42" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+  </track>
+  <track id="12" label="ostalo" source="manual">
+    <polygon frame="2" keyframe="1" outside="0" occluded="0" points="23.40,449.31;88.36,457.43;82.95,296.38;127.61,292.32;138.44,458.78;185.81,460.14;153.32,106.90;262.95,6.75;234.53,4.05;8.51,6.75;19.34,112.32;19.34,144.80;32.87,213.82;31.52,392.47" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+    <polygon frame="3" keyframe="1" outside="1" occluded="0" points="23.40,449.31;88.36,457.43;82.95,296.38;127.61,292.32;138.44,458.78;185.81,460.14;153.32,106.90;262.95,6.75;234.53,4.05;8.51,6.75;19.34,112.32;19.34,144.80;32.87,213.82;31.52,392.47" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+  </track>
+  <track id="13" label="vozila" source="manual">
+    <polygon frame="2" keyframe="1" outside="0" occluded="0" points="1192.72,238.18;1173.78,254.42;1157.53,412.77;1191.37,430.36;1215.73,457.43;1303.70,457.43;1318.59,424.95;1573.02,438.48;1632.57,445.25;1648.81,416.83;1697.53,414.12;1692.12,357.28;1643.40,311.26;1577.08,295.02;1490.47,235.47;1376.78,213.82;1260.39,216.53" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+    <polygon frame="3" keyframe="1" outside="1" occluded="0" points="1192.72,238.18;1173.78,254.42;1157.53,412.77;1191.37,430.36;1215.73,457.43;1303.70,457.43;1318.59,424.95;1573.02,438.48;1632.57,445.25;1648.81,416.83;1697.53,414.12;1692.12,357.28;1643.40,311.26;1577.08,295.02;1490.47,235.47;1376.78,213.82;1260.39,216.53" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+  </track>
+  <track id="14" label="ostalo" source="manual">
+    <polygon frame="3" keyframe="1" outside="0" occluded="0" points="12.57,519.69;57.23,522.39;46.41,303.14;0.39,304.50" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+    <polygon frame="4" keyframe="1" outside="1" occluded="0" points="12.57,519.69;57.23,522.39;46.41,303.14;0.39,304.50" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+  </track>
+  <track id="15" label="vozila" source="manual">
+    <polygon frame="3" keyframe="1" outside="0" occluded="0" points="1219.79,243.59;1204.90,259.84;1195.43,315.32;1190.02,415.47;1206.26,442.54;1233.32,460.14;1313.17,483.14;1359.19,466.90;1361.90,442.54;1559.49,443.90;1585.20,461.49;1712.42,461.49;1723.25,442.54;1771.97,430.36;1773.32,365.40;1717.84,318.03;1652.87,309.91;1539.19,232.77;1413.32,212.47;1294.23,219.23" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+    <polygon frame="4" keyframe="1" outside="1" occluded="0" points="1219.79,243.59;1204.90,259.84;1195.43,315.32;1190.02,415.47;1206.26,442.54;1233.32,460.14;1313.17,483.14;1359.19,466.90;1361.90,442.54;1559.49,443.90;1585.20,461.49;1712.42,461.49;1723.25,442.54;1771.97,430.36;1773.32,365.40;1717.84,318.03;1652.87,309.91;1539.19,232.77;1413.32,212.47;1294.23,219.23" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+  </track>
+  <track id="16" label="ostalo" source="manual">
+    <polygon frame="3" keyframe="1" outside="0" occluded="0" points="172.27,328.86;158.74,331.56;172.27,350.51;195.28,464.20;180.39,466.90;174.98,479.08;181.75,492.62;288.66,492.62;288.66,351.87;290.02,327.50;234.53,322.09" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+    <polygon frame="4" keyframe="1" outside="1" occluded="0" points="172.27,328.86;158.74,331.56;172.27,350.51;195.28,464.20;180.39,466.90;174.98,479.08;181.75,492.62;288.66,492.62;288.66,351.87;290.02,327.50;234.53,322.09" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+  </track>
+  <track id="17" label="ostalo" source="manual">
+    <polygon frame="3" keyframe="1" outside="0" occluded="0" points="300.84,331.56;295.43,345.10;303.55,366.75;314.38,460.14;299.49,468.26;296.78,488.56;325.20,495.32;411.82,492.62;413.17,354.57;422.65,341.04;384.75,327.50" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+    <polygon frame="4" keyframe="1" outside="1" occluded="0" points="300.84,331.56;295.43,345.10;303.55,366.75;314.38,460.14;299.49,468.26;296.78,488.56;325.20,495.32;411.82,492.62;413.17,354.57;422.65,341.04;384.75,327.50" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+  </track>
+  <track id="18" label="ostalo" source="manual">
+    <polygon frame="3" keyframe="1" outside="0" occluded="0" points="57.23,479.08;127.61,477.73;101.90,102.84;200.69,10.81;181.77,0.00;0.00,0.00;0.00,300.93;50.47,305.85" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+    <polygon frame="4" keyframe="1" outside="1" occluded="0" points="57.23,479.08;127.61,477.73;101.90,102.84;200.69,10.81;181.77,0.00;0.00,0.00;0.00,300.93;50.47,305.85" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+  </track>
+  <track id="19" label="vozila" source="manual">
+    <polygon frame="4" keyframe="1" outside="0" occluded="0" points="1260.39,240.89;1240.09,308.56;1236.03,424.95;1244.15,457.43;1272.57,465.55;1296.93,492.62;1348.36,503.44;1411.97,498.03;1437.69,470.96;1632.57,460.14;1658.29,480.44;1705.66,465.55;1807.16,484.50;1881.60,446.60;1882.95,381.64;1847.76,343.75;1797.69,318.03;1755.73,308.56;1648.81,239.53;1578.44,211.11;1353.78,217.88" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+    <polygon frame="5" keyframe="1" outside="1" occluded="0" points="1260.39,240.89;1240.09,308.56;1236.03,424.95;1244.15,457.43;1272.57,465.55;1296.93,492.62;1348.36,503.44;1411.97,498.03;1437.69,470.96;1632.57,460.14;1658.29,480.44;1705.66,465.55;1807.16,484.50;1881.60,446.60;1882.95,381.64;1847.76,343.75;1797.69,318.03;1755.73,308.56;1648.81,239.53;1578.44,211.11;1353.78,217.88" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+  </track>
+  <track id="20" label="ostalo" source="manual">
+    <polygon frame="4" keyframe="1" outside="0" occluded="0" points="115.43,342.39;101.90,351.87;110.02,373.52;122.20,496.68;115.43,495.32;104.60,515.63;118.14,530.51;237.23,522.39;233.17,370.81;242.65,347.81;200.69,341.04" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+    <polygon frame="5" keyframe="1" outside="1" occluded="0" points="115.43,342.39;101.90,351.87;110.02,373.52;122.20,496.68;115.43,495.32;104.60,515.63;118.14,530.51;237.23,522.39;233.17,370.81;242.65,347.81;200.69,341.04" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+  </track>
+  <track id="21" label="ostalo" source="manual">
+    <polygon frame="4" keyframe="1" outside="0" occluded="0" points="246.71,345.10;238.59,358.63;250.77,389.76;258.89,495.32;239.94,506.15;248.06,526.45;375.28,525.10;368.51,372.17;390.17,358.63;363.10,346.45;311.67,341.04" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+    <polygon frame="5" keyframe="1" outside="1" occluded="0" points="246.71,345.10;238.59,358.63;250.77,389.76;258.89,495.32;239.94,506.15;248.06,526.45;375.28,525.10;368.51,372.17;390.17,358.63;363.10,346.45;311.67,341.04" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+  </track>
+  <track id="22" label="ostalo" source="manual">
+    <polygon frame="5" keyframe="1" outside="0" occluded="0" points="31.52,345.10;0.39,345.10;12.57,384.35;34.23,511.56;17.99,522.39;16.63,539.99;32.87,553.52;158.74,550.81;157.38,378.93;147.91,358.63;168.21,343.75;95.13,338.33" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+    <polygon frame="6" keyframe="1" outside="1" occluded="0" points="31.52,345.10;0.39,345.10;12.57,384.35;34.23,511.56;17.99,522.39;16.63,539.99;32.87,553.52;158.74,550.81;157.38,378.93;147.91,358.63;168.21,343.75;95.13,338.33" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+  </track>
+  <track id="23" label="ostalo" source="manual">
+    <polygon frame="5" keyframe="1" outside="0" occluded="0" points="188.51,343.75;154.68,351.87;157.38,370.81;173.63,377.58;191.22,516.98;173.63,518.33;172.27,539.99;185.81,549.46;315.73,549.46;311.67,376.23;334.68,361.34;313.02,346.45;237.23,343.75" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+    <polygon frame="6" keyframe="1" outside="1" occluded="0" points="188.51,343.75;154.68,351.87;157.38,370.81;173.63,377.58;191.22,516.98;173.63,518.33;172.27,539.99;185.81,549.46;315.73,549.46;311.67,376.23;334.68,361.34;313.02,346.45;237.23,343.75" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+  </track>
+  <track id="24" label="vozila" source="manual">
+    <polygon frame="5" keyframe="1" outside="0" occluded="0" points="1434.98,188.11;1383.55,200.29;1328.06,216.53;1299.64,238.18;1291.52,277.43;1283.40,372.17;1277.99,427.66;1275.28,449.31;1300.99,466.90;1332.12,488.56;1386.26,507.50;1457.99,515.63;1499.94,491.26;1501.29,470.96;1766.56,475.02;1793.63,462.84;1826.11,460.14;1869.41,495.32;1920.00,493.17;1920.00,305.56;1862.65,295.02;1730.02,204.35;1613.63,177.28" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+    <polygon frame="6" keyframe="1" outside="1" occluded="0" points="1434.98,188.11;1383.55,200.29;1328.06,216.53;1299.64,238.18;1291.52,277.43;1283.40,372.17;1277.99,427.66;1275.28,449.31;1300.99,466.90;1332.12,488.56;1386.26,507.50;1457.99,515.63;1499.94,491.26;1501.29,470.96;1766.56,475.02;1793.63,462.84;1826.11,460.14;1869.41,495.32;1920.00,493.17;1920.00,305.56;1862.65,295.02;1730.02,204.35;1613.63,177.28" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+  </track>
+  <track id="25" label="ostalo" source="manual">
+    <polygon frame="6" keyframe="1" outside="0" occluded="0" points="61.29,542.69;35.58,553.52;39.64,588.71;112.72,595.47;204.75,583.29;214.23,569.76;214.23,384.35;238.59,365.40;193.93,346.45;99.19,345.10;23.40,353.22;47.76,424.95" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+    <polygon frame="7" keyframe="1" outside="1" occluded="0" points="61.29,542.69;35.58,553.52;39.64,588.71;112.72,595.47;204.75,583.29;214.23,569.76;214.23,384.35;238.59,365.40;193.93,346.45;99.19,345.10;23.40,353.22;47.76,424.95" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+  </track>
+  <track id="26" label="vozila" source="manual">
+    <polygon frame="6" keyframe="1" outside="0" occluded="0" points="1920.00,249.35;1854.53,205.70;1751.67,166.45;1567.61,166.45;1420.09,189.46;1340.24,220.59;1321.29,278.78;1317.23,380.29;1310.47,456.08;1340.24,492.62;1375.43,523.75;1472.87,542.69;1532.42,549.46;1577.08,493.97;1805.81,491.26;1854.53,498.03;1920.00,485.28" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+    <polygon frame="7" keyframe="1" outside="1" occluded="0" points="1920.00,249.35;1854.53,205.70;1751.67,166.45;1567.61,166.45;1420.09,189.46;1340.24,220.59;1321.29,278.78;1317.23,380.29;1310.47,456.08;1340.24,492.62;1375.43,523.75;1472.87,542.69;1532.42,549.46;1577.08,493.97;1805.81,491.26;1854.53,498.03;1920.00,485.28" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+  </track>
+  <track id="27" label="ostalo" source="manual">
+    <polygon frame="7" keyframe="1" outside="0" occluded="0" points="0.00,380.29;73.47,380.29;103.25,395.17;130.32,403.29;108.66,429.01;111.37,660.44;49.11,673.97;0.00,676.49" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+    <polygon frame="8" keyframe="1" outside="1" occluded="0" points="0.00,380.29;73.47,380.29;103.25,395.17;130.32,403.29;108.66,429.01;111.37,660.44;49.11,673.97;0.00,676.49" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+  </track>
+  <track id="28" label="vozila" source="manual">
+    <polygon frame="7" keyframe="1" outside="0" occluded="0" points="1920.00,116.45;1816.63,117.73;1602.80,143.44;1539.19,171.87;1474.23,185.40;1445.81,232.77;1428.21,316.68;1425.50,438.48;1433.63,492.62;1476.93,522.39;1502.65,554.87;1568.96,556.23;1658.29,588.71;1748.96,591.41;1780.09,523.75;1920.00,525.08" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+    <polygon frame="8" keyframe="1" outside="1" occluded="0" points="1920.00,116.45;1816.63,117.73;1602.80,143.44;1539.19,171.87;1474.23,185.40;1445.81,232.77;1428.21,316.68;1425.50,438.48;1433.63,492.62;1476.93,522.39;1502.65,554.87;1568.96,556.23;1658.29,588.71;1748.96,591.41;1780.09,523.75;1920.00,525.08" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+  </track>
+  <track id="29" label="vozila" source="manual">
+    <polygon frame="8" keyframe="1" outside="0" occluded="0" points="1920.00,103.05;1793.63,115.02;1725.96,127.20;1665.05,175.93;1655.58,217.88;1633.93,339.69;1627.16,426.30;1636.63,510.21;1677.23,539.99;1694.83,541.34;1720.54,571.11;1767.91,579.23;1809.87,579.23;1828.81,560.29;1870.77,564.35;1889.72,592.77;1920.00,614.70" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+    <polygon frame="9" keyframe="1" outside="1" occluded="0" points="1920.00,103.05;1793.63,115.02;1725.96,127.20;1665.05,175.93;1655.58,217.88;1633.93,339.69;1627.16,426.30;1636.63,510.21;1677.23,539.99;1694.83,541.34;1720.54,571.11;1767.91,579.23;1809.87,579.23;1828.81,560.29;1870.77,564.35;1889.72,592.77;1920.00,614.70" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+  </track>
+  <track id="30" label="ostalo" source="manual">
+    <polygon frame="8" keyframe="1" outside="0" occluded="0" points="0.00,374.24;65.35,381.64;87.01,395.17;103.25,401.94;78.89,422.24;72.12,465.55;82.95,610.36;84.30,703.75;0.00,720.14" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+    <polygon frame="9" keyframe="1" outside="1" occluded="0" points="0.00,374.24;65.35,381.64;87.01,395.17;103.25,401.94;78.89,422.24;72.12,465.55;82.95,610.36;84.30,703.75;0.00,720.14" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+  </track>
+  <track id="31" label="ostalo" source="manual">
+    <polygon frame="9" keyframe="1" outside="0" occluded="0" points="0.00,383.87;123.55,376.23;173.63,392.47;218.29,401.94;203.40,420.89;179.04,435.78;174.98,541.34;183.10,694.27;185.81,745.70;91.07,774.12;0.00,784.10" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+    <polygon frame="10" keyframe="1" outside="1" occluded="0" points="0.00,383.87;123.55,376.23;173.63,392.47;218.29,401.94;203.40,420.89;179.04,435.78;174.98,541.34;183.10,694.27;185.81,745.70;91.07,774.12;0.00,784.10" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+  </track>
+  <track id="32" label="ostalo" source="manual">
+    <polygon frame="10" keyframe="1" outside="0" occluded="0" points="0.00,380.10;135.73,376.23;158.74,387.05;101.90,412.77;103.25,434.42;118.14,479.08;149.26,655.02;158.74,756.53;126.26,766.00;124.90,813.37;42.35,833.67;0.00,830.65" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+    <polygon frame="11" keyframe="1" outside="1" occluded="0" points="0.00,380.10;135.73,376.23;158.74,387.05;101.90,412.77;103.25,434.42;118.14,479.08;149.26,655.02;158.74,756.53;126.26,766.00;124.90,813.37;42.35,833.67;0.00,830.65" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+  </track>
+  <track id="33" label="ostalo" source="manual">
+    <polygon frame="10" keyframe="1" outside="0" occluded="0" points="120.84,397.88;97.84,419.53;99.19,449.31;124.90,492.62;161.44,749.76;118.14,772.77;122.20,814.72;145.20,849.91;197.99,845.85;317.08,848.56;440.24,801.19;428.06,450.66;461.90,420.89;461.90,407.35;409.11,380.29;296.78,377.58" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+    <polygon frame="11" keyframe="1" outside="1" occluded="0" points="120.84,397.88;97.84,419.53;99.19,449.31;124.90,492.62;161.44,749.76;118.14,772.77;122.20,814.72;145.20,849.91;197.99,845.85;317.08,848.56;440.24,801.19;428.06,450.66;461.90,420.89;461.90,407.35;409.11,380.29;296.78,377.58" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+  </track>
+  <track id="34" label="ostalo" source="manual">
+    <polygon frame="11" keyframe="1" outside="0" occluded="0" points="610.77,445.25;585.05,483.14;602.65,909.46;526.86,951.41;417.23,986.60;313.02,964.95;252.12,963.59;208.81,943.29;208.81,874.27;235.88,855.32;262.95,856.68;192.57,466.90;176.33,441.19;181.75,420.89;204.75,404.65;291.37,382.99;415.88,372.17;529.56,370.81;580.99,381.64;637.84,426.30" z_order="0">
+      <attribute name="blizina">zelo_blizu</attribute>
+    </polygon>
+    <polygon frame="12" keyframe="1" outside="1" occluded="0" points="610.77,445.25;585.05,483.14;602.65,909.46;526.86,951.41;417.23,986.60;313.02,964.95;252.12,963.59;208.81,943.29;208.81,874.27;235.88,855.32;262.95,856.68;192.57,466.90;176.33,441.19;181.75,420.89;204.75,404.65;291.37,382.99;415.88,372.17;529.56,370.81;580.99,381.64;637.84,426.30" z_order="0">
+      <attribute name="blizina">zelo_blizu</attribute>
+    </polygon>
+  </track>
+  <track id="35" label="ostalo" source="manual">
+    <polygon frame="11" keyframe="1" outside="0" occluded="0" points="0.00,917.07;84.30,936.53;150.62,936.53;197.99,921.64;210.17,866.15;268.36,859.38;185.81,469.61;176.33,416.83;248.06,392.47;234.53,378.93;0.00,386.34" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+    <polygon frame="12" keyframe="1" outside="1" occluded="0" points="0.00,917.07;84.30,936.53;150.62,936.53;197.99,921.64;210.17,866.15;268.36,859.38;185.81,469.61;176.33,416.83;248.06,392.47;234.53,378.93;0.00,386.34" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+  </track>
+  <track id="36" label="ostalo" source="manual">
+    <polygon frame="12" keyframe="1" outside="0" occluded="0" points="0.00,393.14;350.92,374.87;411.82,393.82;448.36,389.76;513.32,435.78;514.68,468.26;449.72,534.57;468.29,1080.00;0.00,1080.00" z_order="0">
+      <attribute name="blizina">zelo_blizu</attribute>
+    </polygon>
+    <polygon frame="13" keyframe="1" outside="1" occluded="0" points="0.00,393.14;350.92,374.87;411.82,393.82;448.36,389.76;513.32,435.78;514.68,468.26;449.72,534.57;468.29,1080.00;0.00,1080.00" z_order="0">
+      <attribute name="blizina">zelo_blizu</attribute>
+    </polygon>
+  </track>
+  <track id="37" label="ostalo" source="manual">
+    <polygon frame="13" keyframe="1" outside="0" occluded="0" points="1159.29,129.91;1118.69,285.55;1118.69,351.87;1111.93,418.18;1137.64,434.42;1189.07,433.07;1221.55,429.01;1205.31,212.47;1180.95,142.09" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+    <polygon frame="14" keyframe="1" outside="1" occluded="0" points="1159.29,129.91;1118.69,285.55;1118.69,351.87;1111.93,418.18;1137.64,434.42;1189.07,433.07;1221.55,429.01;1205.31,212.47;1180.95,142.09" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+  </track>
+  <track id="38" label="ostalo" source="manual">
+    <polygon frame="13" keyframe="1" outside="0" occluded="0" points="894.03,318.03;894.03,456.08;1056.44,458.78;1087.56,446.60;1086.21,311.26" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+    <polygon frame="14" keyframe="1" outside="1" occluded="0" points="894.03,318.03;894.03,456.08;1056.44,458.78;1087.56,446.60;1086.21,311.26" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+  </track>
+  <track id="39" label="ostalo" source="manual">
+    <polygon frame="14" keyframe="1" outside="0" occluded="0" points="278.24,288.26;283.66,442.54;471.78,445.25;528.62,430.36;528.62,282.84" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+    <polygon frame="15" keyframe="1" outside="1" occluded="0" points="278.24,288.26;283.66,442.54;471.78,445.25;528.62,430.36;528.62,282.84" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+  </track>
+  <track id="40" label="ostalo" source="manual">
+    <polygon frame="14" keyframe="1" outside="0" occluded="0" points="603.05,71.71;566.51,227.35;559.75,403.29;570.57,429.01;646.36,418.18;673.43,415.47;663.96,205.70" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+    <polygon frame="15" keyframe="1" outside="1" occluded="0" points="603.05,71.71;566.51,227.35;559.75,403.29;570.57,429.01;646.36,418.18;673.43,415.47;663.96,205.70" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+  </track>
+  <track id="41" label="ostalo" source="manual">
+    <polygon frame="15" keyframe="1" outside="0" occluded="0" points="0.00,275.04;248.47,282.84;256.59,447.96;0.00,484.24" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+    <polygon frame="16" keyframe="1" outside="1" occluded="0" points="0.00,275.04;248.47,282.84;256.59,447.96;0.00,484.24" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+  </track>
+  <track id="42" label="ostalo" source="manual">
+    <polygon frame="15" keyframe="1" outside="0" occluded="0" points="490.72,373.52;478.54,411.41;482.60,426.30;561.10,419.53;578.69,396.53;574.63,370.81;529.97,354.57;504.26,357.28" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+    <polygon frame="16" keyframe="1" outside="1" occluded="0" points="490.72,373.52;478.54,411.41;482.60,426.30;561.10,419.53;578.69,396.53;574.63,370.81;529.97,354.57;504.26,357.28" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+  </track>
+  <track id="43" label="ostalo" source="manual">
+    <polygon frame="15" keyframe="1" outside="0" occluded="0" points="343.20,39.23;306.66,190.81;299.90,370.81;301.25,424.95;409.52,426.30;444.71,415.47;462.30,381.64;436.59,318.03;394.63,128.56;372.98,58.18" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+    <polygon frame="16" keyframe="1" outside="1" occluded="0" points="343.20,39.23;306.66,190.81;299.90,370.81;301.25,424.95;409.52,426.30;444.71,415.47;462.30,381.64;436.59,318.03;394.63,128.56;372.98,58.18" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+  </track>
+  <track id="44" label="ostalo" source="manual">
+    <polygon frame="16" keyframe="1" outside="0" occluded="0" points="0.00,282.05;182.15,286.90;182.15,470.96;0.00,521.12" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+    <polygon frame="17" keyframe="1" outside="1" occluded="0" points="0.00,282.05;182.15,286.90;182.15,470.96;0.00,521.12" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+  </track>
+  <track id="45" label="ostalo" source="manual">
+    <polygon frame="16" keyframe="1" outside="0" occluded="0" points="287.71,24.35;264.71,106.90;243.05,240.89;241.70,313.97;224.11,358.63;240.35,441.19;259.29,466.90;379.75,443.90;418.99,411.41;416.29,378.93;383.81,332.92;360.80,192.17;329.67,69.01" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+    <polygon frame="17" keyframe="1" outside="1" occluded="0" points="287.71,24.35;264.71,106.90;243.05,240.89;241.70,313.97;224.11,358.63;240.35,441.19;259.29,466.90;379.75,443.90;418.99,411.41;416.29,378.93;383.81,332.92;360.80,192.17;329.67,69.01" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+  </track>
+  <track id="46" label="ostalo" source="manual">
+    <polygon frame="16" keyframe="1" outside="0" occluded="0" points="466.36,378.93;451.47,403.29;435.23,412.77;443.35,443.90;527.26,446.60;546.21,424.95;546.21,387.05;492.08,366.75" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+    <polygon frame="17" keyframe="1" outside="1" occluded="0" points="466.36,378.93;451.47,403.29;435.23,412.77;443.35,443.90;527.26,446.60;546.21,424.95;546.21,387.05;492.08,366.75" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+  </track>
+  <track id="47" label="ostalo" source="manual">
+    <polygon frame="17" keyframe="1" outside="0" occluded="0" points="0.00,293.88;187.56,300.44;191.63,496.68;0.00,547.62" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+    <polygon frame="18" keyframe="1" outside="1" occluded="0" points="0.00,293.88;187.56,300.44;191.63,496.68;0.00,547.62" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+  </track>
+  <track id="48" label="ostalo" source="manual">
+    <polygon frame="17" keyframe="1" outside="0" occluded="0" points="313.43,20.29;263.35,262.54;255.23,346.45;262.00,472.32;317.49,483.14;406.81,475.02;436.59,446.60;460.95,403.29;418.99,336.98;409.52,251.72;398.69,188.11;347.26,43.29" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+    <polygon frame="18" keyframe="1" outside="1" occluded="0" points="313.43,20.29;263.35,262.54;255.23,346.45;262.00,472.32;317.49,483.14;406.81,475.02;436.59,446.60;460.95,403.29;418.99,336.98;409.52,251.72;398.69,188.11;347.26,43.29" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+  </track>
+  <track id="49" label="ostalo" source="manual">
+    <polygon frame="17" keyframe="1" outside="0" occluded="0" points="498.84,389.76;475.84,438.48;481.25,468.26;570.57,461.49;597.64,433.07;593.58,412.77;532.68,376.23" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+    <polygon frame="18" keyframe="1" outside="1" occluded="0" points="498.84,389.76;475.84,438.48;481.25,468.26;570.57,461.49;597.64,433.07;593.58,412.77;532.68,376.23" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+  </track>
+  <track id="50" label="ostalo" source="manual">
+    <polygon frame="18" keyframe="1" outside="0" occluded="0" points="594.93,391.11;567.87,403.29;567.87,427.66;542.15,447.96;543.50,479.08;592.23,485.85;643.66,481.79;682.90,452.02;674.78,423.59;635.53,397.88" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+    <polygon frame="19" keyframe="1" outside="1" occluded="0" points="594.93,391.11;567.87,403.29;567.87,427.66;542.15,447.96;543.50,479.08;592.23,485.85;643.66,481.79;682.90,452.02;674.78,423.59;635.53,397.88" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+  </track>
+  <track id="51" label="ostalo" source="manual">
+    <polygon frame="18" keyframe="1" outside="0" occluded="0" points="0.00,291.56;220.05,301.79;225.46,523.75;0.00,580.42" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+    <polygon frame="19" keyframe="1" outside="1" occluded="0" points="0.00,291.56;220.05,301.79;225.46,523.75;0.00,580.42" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+  </track>
+  <track id="52" label="ostalo" source="manual">
+    <polygon frame="18" keyframe="1" outside="0" occluded="0" points="370.27,2.69;316.14,194.87;317.49,410.06;332.38,496.68;410.87,500.74;470.42,487.20;517.79,433.07;477.19,350.51;458.24,193.52;418.99,41.94" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+    <polygon frame="19" keyframe="1" outside="1" occluded="0" points="370.27,2.69;316.14,194.87;317.49,410.06;332.38,496.68;410.87,500.74;470.42,487.20;517.79,433.07;477.19,350.51;458.24,193.52;418.99,41.94" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+  </track>
+  <track id="53" label="ostalo" source="manual">
+    <polygon frame="19" keyframe="1" outside="0" occluded="0" points="0.00,300.61;283.66,303.14;287.72,539.99;0.00,604.79" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+    <polygon frame="20" keyframe="1" outside="1" occluded="0" points="0.00,300.61;283.66,303.14;287.72,539.99;0.00,604.79" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+  </track>
+  <track id="54" label="ostalo" source="manual">
+    <polygon frame="19" keyframe="1" outside="0" occluded="0" points="680.20,395.17;662.60,429.01;640.95,458.78;632.83,475.02;635.53,496.68;737.04,495.32;772.23,480.44;772.23,442.54;724.86,407.35" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+    <polygon frame="20" keyframe="1" outside="1" occluded="0" points="680.20,395.17;662.60,429.01;640.95,458.78;632.83,475.02;635.53,496.68;737.04,495.32;772.23,480.44;772.23,442.54;724.86,407.35" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+  </track>
+  <track id="55" label="ostalo" source="manual">
+    <polygon frame="19" keyframe="1" outside="0" occluded="0" points="441.16,0.00;414.93,85.25;398.69,202.99;383.81,320.74;382.45,424.95;391.93,491.26;409.52,510.21;466.36,512.92;519.14,502.09;569.22,488.56;603.05,454.72;603.05,422.24;575.99,362.69;582.75,324.80;557.04,301.79;524.56,116.38;492.08,16.23;449.19,0.00" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+    <polygon frame="20" keyframe="1" outside="1" occluded="0" points="441.16,0.00;414.93,85.25;398.69,202.99;383.81,320.74;382.45,424.95;391.93,491.26;409.52,510.21;466.36,512.92;519.14,502.09;569.22,488.56;603.05,454.72;603.05,422.24;575.99,362.69;582.75,324.80;557.04,301.79;524.56,116.38;492.08,16.23;449.19,0.00" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+  </track>
+  <track id="56" label="ostalo" source="manual">
+    <polygon frame="20" keyframe="1" outside="0" occluded="0" points="807.41,434.42;753.28,498.03;757.34,546.75;869.67,538.63;918.39,499.38;856.14,435.78" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+    <polygon frame="21" keyframe="1" outside="1" occluded="0" points="807.41,434.42;753.28,498.03;757.34,546.75;869.67,538.63;918.39,499.38;856.14,435.78" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+  </track>
+  <track id="57" label="ostalo" source="manual">
+    <polygon frame="20" keyframe="1" outside="0" occluded="0" points="0.00,312.87;367.56,322.09;374.33,592.77;0.00,682.34" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+    <polygon frame="21" keyframe="1" outside="1" occluded="0" points="0.00,312.87;367.56,322.09;374.33,592.77;0.00,682.34" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+  </track>
+  <track id="58" label="ostalo" source="manual">
+    <polygon frame="20" keyframe="1" outside="0" occluded="0" points="549.76,0.00;511.02,104.20;485.31,281.49;478.54,441.19;508.32,539.99;555.69,558.93;651.78,546.75;701.85,534.57;723.50,475.02;688.32,378.93;659.90,239.53;619.29,8.11;560.23,0.00" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+    <polygon frame="21" keyframe="1" outside="1" occluded="0" points="549.76,0.00;511.02,104.20;485.31,281.49;478.54,441.19;508.32,539.99;555.69,558.93;651.78,546.75;701.85,534.57;723.50,475.02;688.32,378.93;659.90,239.53;619.29,8.11;560.23,0.00" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+  </track>
+  <track id="59" label="ostalo" source="manual">
+    <polygon frame="21" keyframe="1" outside="0" occluded="0" points="0.00,330.73;462.30,345.10;469.07,650.96;0.00,779.01" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+    <polygon frame="22" keyframe="1" outside="1" occluded="0" points="0.00,330.73;462.30,345.10;469.07,650.96;0.00,779.01" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+  </track>
+  <track id="60" label="ostalo" source="manual">
+    <polygon frame="21" keyframe="1" outside="0" occluded="0" points="655.58,0.00;598.99,300.44;598.99,460.14;604.41,599.53;655.84,614.42;784.41,595.47;846.66,554.87;858.84,515.63;843.96,435.78;812.83,354.57;745.16,0.00" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+    <polygon frame="22" keyframe="1" outside="1" occluded="0" points="655.58,0.00;598.99,300.44;598.99,460.14;604.41,599.53;655.84,614.42;784.41,595.47;846.66,554.87;858.84,515.63;843.96,435.78;812.83,354.57;745.16,0.00" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+  </track>
+  <track id="61" label="ostalo" source="manual">
+    <polygon frame="21" keyframe="1" outside="0" occluded="0" points="930.57,465.55;933.28,512.92;887.26,535.93;887.26,586.00;1019.90,591.41;1068.62,541.34;1064.56,502.09;1007.72,468.26;991.47,453.37" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+    <polygon frame="22" keyframe="1" outside="1" occluded="0" points="930.57,465.55;933.28,512.92;887.26,535.93;887.26,586.00;1019.90,591.41;1068.62,541.34;1064.56,502.09;1007.72,468.26;991.47,453.37" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+  </track>
+  <track id="62" label="ostalo" source="manual">
+    <polygon frame="22" keyframe="1" outside="0" occluded="0" points="996.89,496.68;983.35,533.22;946.81,575.17;953.58,625.25;1109.22,626.60;1141.70,572.47;1137.64,530.51;1072.68,491.26;1032.08,475.02" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+    <polygon frame="23" keyframe="1" outside="1" occluded="0" points="996.89,496.68;983.35,533.22;946.81,575.17;953.58,625.25;1109.22,626.60;1141.70,572.47;1137.64,530.51;1072.68,491.26;1032.08,475.02" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+  </track>
+  <track id="63" label="ostalo" source="manual">
+    <polygon frame="22" keyframe="1" outside="0" occluded="0" points="657.96,-0.00;640.95,79.84;608.47,376.23;608.47,534.57;619.29,623.90;649.07,660.44;743.81,664.50;810.12,640.14;857.49,623.90;896.74,587.35;910.27,519.69;849.37,433.07;857.49,336.98;818.24,155.63;777.70,0.00" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+    <polygon frame="23" keyframe="1" outside="1" occluded="0" points="657.96,-0.00;640.95,79.84;608.47,376.23;608.47,534.57;619.29,623.90;649.07,660.44;743.81,664.50;810.12,640.14;857.49,623.90;896.74,587.35;910.27,519.69;849.37,433.07;857.49,336.98;818.24,155.63;777.70,0.00" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+  </track>
+  <track id="64" label="ostalo" source="manual">
+    <polygon frame="22" keyframe="1" outside="0" occluded="0" points="0.00,353.42;443.35,365.40;454.18,733.52;141.55,844.50;0.00,858.54" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+    <polygon frame="23" keyframe="1" outside="1" occluded="0" points="0.00,353.42;443.35,365.40;454.18,733.52;141.55,844.50;0.00,858.54" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+  </track>
+  <track id="65" label="ostalo" source="manual">
+    <polygon frame="23" keyframe="1" outside="0" occluded="0" points="531.32,558.93;535.38,683.44;548.92,718.63;632.83,738.93;739.75,741.64;825.01,675.32;877.79,629.31;883.20,523.75;829.07,468.26;741.61,0.00;623.19,0.00;565.16,1.34" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+    <polygon frame="24" keyframe="1" outside="1" occluded="0" points="531.32,558.93;535.38,683.44;548.92,718.63;632.83,738.93;739.75,741.64;825.01,675.32;877.79,629.31;883.20,523.75;829.07,468.26;741.61,0.00;623.19,0.00;565.16,1.34" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+  </track>
+  <track id="66" label="ostalo" source="manual">
+    <polygon frame="23" keyframe="1" outside="0" occluded="0" points="0.00,364.49;299.90,368.11;324.26,584.65;331.02,826.90;0.00,977.83" z_order="0">
+      <attribute name="blizina">zelo_blizu</attribute>
+    </polygon>
+    <polygon frame="24" keyframe="1" outside="1" occluded="0" points="0.00,364.49;299.90,368.11;324.26,584.65;331.02,826.90;0.00,977.83" z_order="0">
+      <attribute name="blizina">zelo_blizu</attribute>
+    </polygon>
+  </track>
+  <track id="67" label="ostalo" source="manual">
+    <polygon frame="23" keyframe="1" outside="0" occluded="0" points="988.77,525.10;954.93,592.77;938.69,629.31;934.63,664.50;940.05,699.69;1113.28,687.50;1136.29,618.48;1124.11,561.64;1045.61,514.27" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+    <polygon frame="24" keyframe="1" outside="1" occluded="0" points="988.77,525.10;954.93,592.77;938.69,629.31;934.63,664.50;940.05,699.69;1113.28,687.50;1136.29,618.48;1124.11,561.64;1045.61,514.27" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+  </track>
+  <track id="68" label="ostalo" source="manual">
+    <polygon frame="24" keyframe="1" outside="0" occluded="0" points="264.71,591.41;205.16,692.92;167.26,729.46;182.15,795.78;425.76,774.12;456.89,676.68;442.00,622.54;358.09,580.59" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+    <polygon frame="25" keyframe="1" outside="1" occluded="0" points="264.71,591.41;205.16,692.92;167.26,729.46;182.15,795.78;425.76,774.12;456.89,676.68;442.00,622.54;358.09,580.59" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+  </track>
+  <track id="69" label="ostalo" source="manual">
+    <polygon frame="24" keyframe="1" outside="0" occluded="0" points="0.00,806.73;105.01,737.58;113.13,637.43;21.10,485.85;0.00,475.30" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+    <polygon frame="25" keyframe="1" outside="1" occluded="0" points="0.00,806.73;105.01,737.58;113.13,637.43;21.10,485.85;0.00,475.30" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+  </track>
+  <track id="70" label="ostalo" source="manual">
+    <polygon frame="24" keyframe="1" outside="0" occluded="0" points="352.68,269.31;370.27,581.94;442.00,630.66;1101.10,580.59;1090.27,263.90" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+    <polygon frame="25" keyframe="1" outside="1" occluded="0" points="352.68,269.31;370.27,581.94;442.00,630.66;1101.10,580.59;1090.27,263.90" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+  </track>
+  <track id="71" label="ostalo" source="manual">
+    <polygon frame="26" keyframe="1" outside="0" occluded="0" points="1624.86,4.05;1620.80,599.53;1664.11,596.83;1660.07,0.00;1642.39,0.00" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+    <polygon frame="27" keyframe="1" outside="1" occluded="0" points="1624.86,4.05;1620.80,599.53;1664.11,596.83;1660.07,0.00;1642.39,0.00" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+  </track>
+  <track id="72" label="ostalo" source="manual">
+    <polygon frame="27" keyframe="1" outside="0" occluded="0" points="623.39,0.00;640.95,622.54;677.49,613.07;649.32,0.00" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+    <polygon frame="28" keyframe="1" outside="1" occluded="0" points="623.39,0.00;640.95,622.54;677.49,613.07;649.32,0.00" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+  </track>
+  <track id="73" label="ostalo" source="manual">
+    <polygon frame="27" keyframe="1" outside="0" occluded="0" points="1320.37,0.00;1323.05,565.70;1347.41,562.99;1343.38,0.00" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+    <polygon frame="28" keyframe="1" outside="1" occluded="0" points="1320.37,0.00;1323.05,565.70;1347.41,562.99;1343.38,0.00" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+  </track>
+  <track id="74" label="vozila" source="manual">
+    <polygon frame="28" keyframe="1" outside="0" occluded="0" points="1153.88,424.95;1118.69,445.25;1102.45,488.56;1105.16,523.75;1128.17,545.40;1130.87,569.76;1189.07,583.29;1222.90,558.93;1527.41,564.35;1536.89,591.41;1566.66,607.66;1612.68,611.72;1642.45,576.53;1697.94,558.93;1715.53,531.87;1702.00,326.15;1592.38,299.08;1397.49,303.14;1275.69,353.22;1225.61,389.76;1197.19,414.12" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+    <polygon frame="29" keyframe="1" outside="1" occluded="0" points="1153.88,424.95;1118.69,445.25;1102.45,488.56;1105.16,523.75;1128.17,545.40;1130.87,569.76;1189.07,583.29;1222.90,558.93;1527.41,564.35;1536.89,591.41;1566.66,607.66;1612.68,611.72;1642.45,576.53;1697.94,558.93;1715.53,531.87;1702.00,326.15;1592.38,299.08;1397.49,303.14;1275.69,353.22;1225.61,389.76;1197.19,414.12" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+  </track>
+  <track id="75" label="ostalo" source="manual">
+    <polygon frame="28" keyframe="1" outside="0" occluded="0" points="393.41,0.00;413.58,619.84;447.41,621.19;421.92,0.00" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+    <polygon frame="29" keyframe="1" outside="1" occluded="0" points="393.41,0.00;413.58,619.84;447.41,621.19;421.92,0.00" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+  </track>
+  <track id="76" label="vozila" source="manual">
+    <polygon frame="29" keyframe="1" outside="0" occluded="0" points="681.55,431.71;635.53,456.08;594.93,487.20;578.69,523.75;585.46,569.76;643.66,581.94;659.90,604.95;697.79,613.07;743.81,577.88;1063.20,583.29;1095.69,626.60;1147.11,632.02;1191.78,592.77;1237.79,572.47;1239.14,523.75;1228.32,358.63;1212.08,326.15;1163.35,308.56;1007.72,305.85;915.69,316.68;831.78,342.39;769.52,384.35;734.33,419.53" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+    <polygon frame="30" keyframe="1" outside="1" occluded="0" points="681.55,431.71;635.53,456.08;594.93,487.20;578.69,523.75;585.46,569.76;643.66,581.94;659.90,604.95;697.79,613.07;743.81,577.88;1063.20,583.29;1095.69,626.60;1147.11,632.02;1191.78,592.77;1237.79,572.47;1239.14,523.75;1228.32,358.63;1212.08,326.15;1163.35,308.56;1007.72,305.85;915.69,316.68;831.78,342.39;769.52,384.35;734.33,419.53" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+  </track>
+  <track id="77" label="vozila" source="manual">
+    <polygon frame="30" keyframe="1" outside="0" occluded="0" points="527.26,437.13;482.60,454.72;458.24,484.50;432.53,507.50;424.41,588.71;443.35,594.12;492.08,603.59;527.26,629.31;561.10,641.49;616.59,610.36;778.99,606.30;976.59,599.53;991.47,634.72;1029.37,659.08;1098.39,646.90;1117.34,611.72;1155.23,594.12;1178.24,581.94;1153.88,318.03;1113.28,297.73;1014.48,288.26;848.02,293.67;741.10,322.09;632.83,387.05;596.29,420.89" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+    <polygon frame="31" keyframe="1" outside="1" occluded="0" points="527.26,437.13;482.60,454.72;458.24,484.50;432.53,507.50;424.41,588.71;443.35,594.12;492.08,603.59;527.26,629.31;561.10,641.49;616.59,610.36;778.99,606.30;976.59,599.53;991.47,634.72;1029.37,659.08;1098.39,646.90;1117.34,611.72;1155.23,594.12;1178.24,581.94;1153.88,318.03;1113.28,297.73;1014.48,288.26;848.02,293.67;741.10,322.09;632.83,387.05;596.29,420.89" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+  </track>
+  <track id="78" label="vozila" source="manual">
+    <polygon frame="31" keyframe="1" outside="0" occluded="0" points="511.02,427.66;437.94,445.25;400.05,483.14;366.21,511.56;360.80,567.05;370.27,621.19;432.53,629.31;463.66,668.56;525.91,676.68;561.10,665.85;577.34,621.19;991.47,627.96;1023.96,678.03;1080.80,687.50;1132.23,673.97;1155.23,619.84;1201.25,619.84;1206.66,586.00;1185.01,301.79;1147.11,280.14;967.11,270.66;865.61,267.96;761.40,288.26;651.78,339.69;574.63,395.17;547.56,420.89" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+    <polygon frame="32" keyframe="1" outside="1" occluded="0" points="511.02,427.66;437.94,445.25;400.05,483.14;366.21,511.56;360.80,567.05;370.27,621.19;432.53,629.31;463.66,668.56;525.91,676.68;561.10,665.85;577.34,621.19;991.47,627.96;1023.96,678.03;1080.80,687.50;1132.23,673.97;1155.23,619.84;1201.25,619.84;1206.66,586.00;1185.01,301.79;1147.11,280.14;967.11,270.66;865.61,267.96;761.40,288.26;651.78,339.69;574.63,395.17;547.56,420.89" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+  </track>
+  <track id="79" label="vozila" source="manual">
+    <polygon frame="32" keyframe="1" outside="0" occluded="0" points="486.66,430.36;359.44,470.96;339.14,507.50;303.96,529.16;290.42,562.99;280.95,603.59;290.42,655.02;317.49,667.20;372.98,669.91;390.57,705.10;412.23,717.28;478.54,726.75;527.26,667.20;745.16,675.32;1028.02,668.56;1044.26,709.16;1087.56,732.17;1152.53,734.87;1185.01,705.10;1197.19,659.08;1235.08,663.14;1272.98,629.31;1274.33,609.01;1263.50,580.59;1239.14,301.79;1209.37,274.72;1187.72,274.72;1176.89,258.48;1014.48,247.66;858.84,253.07;784.41,262.54;776.29,277.43;699.14,295.02;617.94,338.33;523.20,410.06" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+    <polygon frame="33" keyframe="1" outside="1" occluded="0" points="486.66,430.36;359.44,470.96;339.14,507.50;303.96,529.16;290.42,562.99;280.95,603.59;290.42,655.02;317.49,667.20;372.98,669.91;390.57,705.10;412.23,717.28;478.54,726.75;527.26,667.20;745.16,675.32;1028.02,668.56;1044.26,709.16;1087.56,732.17;1152.53,734.87;1185.01,705.10;1197.19,659.08;1235.08,663.14;1272.98,629.31;1274.33,609.01;1263.50,580.59;1239.14,301.79;1209.37,274.72;1187.72,274.72;1176.89,258.48;1014.48,247.66;858.84,253.07;784.41,262.54;776.29,277.43;699.14,295.02;617.94,338.33;523.20,410.06" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+  </track>
+  <track id="80" label="vozila" source="manual">
+    <polygon frame="33" keyframe="1" outside="0" occluded="0" points="1318.99,239.54;1351.47,324.80;1362.30,441.19;1373.13,588.71;1386.66,659.08;1343.35,707.81;1298.69,703.75;1243.20,795.78;1186.36,793.07;1107.87,782.24;1091.63,717.28;497.49,724.05;433.88,783.59;383.81,783.59;328.32,774.12;299.90,714.57;240.35,713.22;207.87,696.98;203.81,568.41;283.66,488.56;339.14,457.43;436.59,438.48;546.21,345.10;626.06,296.38;714.03,259.84;784.41,246.30;791.17,228.71;1044.26,197.58;1202.60,208.41;1260.80,211.11;1279.75,236.83" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+    <polygon frame="34" keyframe="1" outside="1" occluded="0" points="1318.99,239.54;1351.47,324.80;1362.30,441.19;1373.13,588.71;1386.66,659.08;1343.35,707.81;1298.69,703.75;1243.20,795.78;1186.36,793.07;1107.87,782.24;1091.63,717.28;497.49,724.05;433.88,783.59;383.81,783.59;328.32,774.12;299.90,714.57;240.35,713.22;207.87,696.98;203.81,568.41;283.66,488.56;339.14,457.43;436.59,438.48;546.21,345.10;626.06,296.38;714.03,259.84;784.41,246.30;791.17,228.71;1044.26,197.58;1202.60,208.41;1260.80,211.11;1279.75,236.83" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+  </track>
+  <track id="81" label="vozila" source="manual">
+    <polygon frame="34" keyframe="1" outside="0" occluded="0" points="1209.37,204.35;1231.02,217.88;1244.56,255.78;1263.50,338.33;1271.63,453.37;1275.69,554.87;1289.22,604.95;1286.51,667.20;1291.93,705.10;1277.04,736.23;1240.50,767.35;1203.96,755.17;1194.48,787.66;1168.77,837.73;1141.70,855.32;1079.44,868.86;1034.78,864.80;977.94,833.67;949.52,775.47;866.96,768.71;613.88,778.18;233.58,787.66;188.92,789.01;149.67,841.79;109.07,885.10;0.00,885.10;0.00,452.46;121.25,423.59;256.59,309.91;439.29,211.11;512.38,202.99;562.45,189.46;580.05,166.45;773.58,150.21;887.26,147.50;1092.98,159.69;1157.94,161.04;1163.35,189.46" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+    <polygon frame="35" keyframe="1" outside="1" occluded="0" points="1209.37,204.35;1231.02,217.88;1244.56,255.78;1263.50,338.33;1271.63,453.37;1275.69,554.87;1289.22,604.95;1286.51,667.20;1291.93,705.10;1277.04,736.23;1240.50,767.35;1203.96,755.17;1194.48,787.66;1168.77,837.73;1141.70,855.32;1079.44,868.86;1034.78,864.80;977.94,833.67;949.52,775.47;866.96,768.71;613.88,778.18;233.58,787.66;188.92,789.01;149.67,841.79;109.07,885.10;0.00,885.10;0.00,452.46;121.25,423.59;256.59,309.91;439.29,211.11;512.38,202.99;562.45,189.46;580.05,166.45;773.58,150.21;887.26,147.50;1092.98,159.69;1157.94,161.04;1163.35,189.46" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+  </track>
+  <track id="82" label="vozila" source="manual">
+    <polygon frame="35" keyframe="1" outside="0" occluded="0" points="37.89,0.00;322.90,29.76;482.60,60.89;513.73,106.90;578.69,127.20;605.76,178.63;630.12,299.08;647.72,431.72;651.78,560.29;670.72,638.78;666.66,737.58;678.84,767.35;663.96,806.60;620.65,845.85;582.75,864.80;567.87,845.85;546.21,844.50;520.50,963.59;456.89,1006.90;341.85,1046.15;272.83,1039.38;190.27,973.07;175.38,913.52;0.00,944.24;0.00,0.00" z_order="0">
+      <attribute name="blizina">zelo_blizu</attribute>
+    </polygon>
+    <polygon frame="36" keyframe="1" outside="1" occluded="0" points="37.89,0.00;322.90,29.76;482.60,60.89;513.73,106.90;578.69,127.20;605.76,178.63;630.12,299.08;647.72,431.72;651.78,560.29;670.72,638.78;666.66,737.58;678.84,767.35;663.96,806.60;620.65,845.85;582.75,864.80;567.87,845.85;546.21,844.50;520.50,963.59;456.89,1006.90;341.85,1046.15;272.83,1039.38;190.27,973.07;175.38,913.52;0.00,944.24;0.00,0.00" z_order="0">
+      <attribute name="blizina">zelo_blizu</attribute>
+    </polygon>
+  </track>
+  <track id="83" label="ostalo" source="manual">
+    <polygon frame="35" keyframe="1" outside="0" occluded="0" points="1645.16,389.76;1609.97,391.11;1615.38,568.41;1665.46,565.70;1654.63,407.35" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+    <polygon frame="36" keyframe="1" outside="1" occluded="0" points="1645.16,389.76;1609.97,391.11;1615.38,568.41;1665.46,565.70;1654.63,407.35" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+  </track>
+  <track id="84" label="ostalo" source="manual">
+    <polygon frame="36" keyframe="1" outside="0" occluded="0" points="1051.02,369.46;1025.31,369.46;1026.66,549.46;1067.26,549.46;1055.08,370.81" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+    <polygon frame="37" keyframe="1" outside="1" occluded="0" points="1051.02,369.46;1025.31,369.46;1026.66,549.46;1067.26,549.46;1055.08,370.81" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+  </track>
+  <track id="85" label="ostalo" source="manual">
+    <polygon frame="36" keyframe="1" outside="0" occluded="0" points="1392.08,388.41;1354.18,415.47;1386.66,431.72;1402.90,652.32;1467.87,665.85;1504.41,667.20;1589.67,655.02;1593.73,619.84;1573.43,602.24;1576.14,411.41;1584.26,388.41;1535.53,378.93" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+    <polygon frame="37" keyframe="1" outside="1" occluded="0" points="1392.08,388.41;1354.18,415.47;1386.66,431.72;1402.90,652.32;1467.87,665.85;1504.41,667.20;1589.67,655.02;1593.73,619.84;1573.43,602.24;1576.14,411.41;1584.26,388.41;1535.53,378.93" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+  </track>
+  <track id="86" label="ostalo" source="manual">
+    <polygon frame="36" keyframe="1" outside="0" occluded="0" points="1595.08,644.20;1700.65,633.37;1702.00,599.53;1681.70,591.41;1691.17,410.06;1703.35,381.64;1664.11,369.46;1550.42,369.46;1528.77,372.17;1588.32,389.76;1574.78,424.95;1578.84,602.24;1596.44,614.42" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+    <polygon frame="37" keyframe="1" outside="1" occluded="0" points="1595.08,644.20;1700.65,633.37;1702.00,599.53;1681.70,591.41;1691.17,410.06;1703.35,381.64;1664.11,369.46;1550.42,369.46;1528.77,372.17;1588.32,389.76;1574.78,424.95;1578.84,602.24;1596.44,614.42" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+  </track>
+  <track id="87" label="ostalo" source="manual">
+    <polygon frame="36" keyframe="1" outside="0" occluded="0" points="1666.81,4.05;1666.81,357.28;1692.53,381.64;1681.70,583.29;1697.94,610.36;1920.00,594.32;1920.00,548.84;1906.36,521.04;1888.77,239.53;1899.36,0.00;1766.23,0.00" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+    <polygon frame="37" keyframe="1" outside="1" occluded="0" points="1666.81,4.05;1666.81,357.28;1692.53,381.64;1681.70,583.29;1697.94,610.36;1920.00,594.32;1920.00,548.84;1906.36,521.04;1888.77,239.53;1899.36,0.00;1766.23,0.00" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+  </track>
+  <track id="88" label="ostalo" source="manual">
+    <polygon frame="37" keyframe="1" outside="0" occluded="0" points="723.50,365.40;737.04,567.05;781.70,564.35;764.11,362.69" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+    <polygon frame="38" keyframe="1" outside="1" occluded="0" points="723.50,365.40;737.04,567.05;781.70,564.35;764.11,362.69" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+  </track>
+  <track id="89" label="ostalo" source="manual">
+    <polygon frame="37" keyframe="1" outside="0" occluded="0" points="1153.88,400.59;1115.99,408.71;1156.59,445.25;1171.47,695.63;1268.92,707.81;1383.96,682.09;1386.66,637.43;1354.18,637.43;1369.07,393.82;1355.53,381.64;1187.72,381.64" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+    <polygon frame="38" keyframe="1" outside="1" occluded="0" points="1153.88,400.59;1115.99,408.71;1156.59,445.25;1171.47,695.63;1268.92,707.81;1383.96,682.09;1386.66,637.43;1354.18,637.43;1369.07,393.82;1355.53,381.64;1187.72,381.64" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+  </track>
+  <track id="90" label="ostalo" source="manual">
+    <polygon frame="37" keyframe="1" outside="0" occluded="0" points="1327.11,373.52;1467.87,374.87;1484.11,385.70;1473.28,422.24;1466.51,614.42;1481.40,609.01;1488.17,640.14;1480.05,661.79;1390.72,676.68;1389.37,637.43;1365.01,636.08;1366.36,385.70" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+    <polygon frame="38" keyframe="1" outside="1" occluded="0" points="1327.11,373.52;1467.87,374.87;1484.11,385.70;1473.28,422.24;1466.51,614.42;1481.40,609.01;1488.17,640.14;1480.05,661.79;1390.72,676.68;1389.37,637.43;1365.01,636.08;1366.36,385.70" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+  </track>
+  <track id="91" label="ostalo" source="manual">
+    <polygon frame="37" keyframe="1" outside="0" occluded="0" points="1435.47,-0.00;1446.21,170.51;1439.44,366.75;1488.17,384.35;1480.05,408.71;1471.93,603.59;1498.99,625.25;1730.42,610.36;1687.11,503.44;1670.87,284.20;1680.30,0.00" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+    <polygon frame="38" keyframe="1" outside="1" occluded="0" points="1435.47,-0.00;1446.21,170.51;1439.44,366.75;1488.17,384.35;1480.05,408.71;1471.93,603.59;1498.99,625.25;1730.42,610.36;1687.11,503.44;1670.87,284.20;1680.30,0.00" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+  </track>
+  <track id="92" label="ostalo" source="manual">
+    <polygon frame="38" keyframe="1" outside="0" occluded="0" points="705.91,387.05;751.93,377.58;758.69,609.01;700.50,627.96" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+    <polygon frame="39" keyframe="1" outside="1" occluded="0" points="705.91,387.05;751.93,377.58;758.69,609.01;700.50,627.96" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+  </track>
+  <track id="93" label="ostalo" source="manual">
+    <polygon frame="38" keyframe="1" outside="0" occluded="0" points="1267.56,401.94;1225.61,403.29;1220.20,422.24;1189.07,429.01;1194.48,457.43;1226.96,476.38;1233.73,606.30;1248.62,797.13;1377.19,820.14;1470.57,801.19;1511.17,791.72;1517.94,741.64;1501.70,722.69;1482.75,724.05;1484.11,447.96;1498.99,429.01;1494.93,407.35;1411.02,391.11" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+    <polygon frame="39" keyframe="1" outside="1" occluded="0" points="1267.56,401.94;1225.61,403.29;1220.20,422.24;1189.07,429.01;1194.48,457.43;1226.96,476.38;1233.73,606.30;1248.62,797.13;1377.19,820.14;1470.57,801.19;1511.17,791.72;1517.94,741.64;1501.70,722.69;1482.75,724.05;1484.11,447.96;1498.99,429.01;1494.93,407.35;1411.02,391.11" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+  </track>
+  <track id="94" label="ostalo" source="manual">
+    <polygon frame="38" keyframe="1" outside="0" occluded="0" points="1438.09,392.47;1549.07,385.70;1603.20,397.88;1622.15,403.29;1622.15,433.07;1612.68,439.84;1597.79,679.38;1626.21,682.09;1630.27,707.81;1623.50,736.23;1588.32,751.11;1519.29,768.71;1515.23,725.40;1492.23,721.34;1481.40,446.60;1508.47,419.53;1500.35,403.29" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+    <polygon frame="39" keyframe="1" outside="1" occluded="0" points="1438.09,392.47;1549.07,385.70;1603.20,397.88;1622.15,403.29;1622.15,433.07;1612.68,439.84;1597.79,679.38;1626.21,682.09;1630.27,707.81;1623.50,736.23;1588.32,751.11;1519.29,768.71;1515.23,725.40;1492.23,721.34;1481.40,446.60;1508.47,419.53;1500.35,403.29" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+  </track>
+  <track id="95" label="ostalo" source="manual">
+    <polygon frame="38" keyframe="1" outside="0" occluded="0" points="1538.76,0.00;1555.84,179.99;1543.66,343.75;1540.95,378.93;1619.44,404.65;1630.27,430.36;1615.38,454.72;1601.85,672.62;1627.56,682.09;1639.75,702.39;1906.36,686.15;1872.53,642.84;1815.69,300.44;1822.45,44.65;1835.21,0.00" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+    <polygon frame="39" keyframe="1" outside="1" occluded="0" points="1538.76,0.00;1555.84,179.99;1543.66,343.75;1540.95,378.93;1619.44,404.65;1630.27,430.36;1615.38,454.72;1601.85,672.62;1627.56,682.09;1639.75,702.39;1906.36,686.15;1872.53,642.84;1815.69,300.44;1822.45,44.65;1835.21,0.00" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+  </track>
+  <track id="96" label="ostalo" source="manual">
+    <polygon frame="39" keyframe="1" outside="0" occluded="0" points="647.71,410.06;654.48,707.81;726.21,690.21;714.03,401.94" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+    <polygon frame="40" keyframe="1" outside="1" occluded="0" points="647.71,410.06;654.48,707.81;726.21,690.21;714.03,401.94" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+  </track>
+  <track id="97" label="ostalo" source="manual">
+    <polygon frame="39" keyframe="1" outside="0" occluded="0" points="1310.87,438.48;1263.50,473.67;1266.21,503.44;1309.52,523.75;1350.12,948.71;1522.00,989.31;1634.33,944.65;1677.64,951.41;1695.23,918.93;1696.59,864.80;1678.99,845.85;1650.57,851.26;1654.63,477.73;1676.29,460.14;1653.28,426.30;1532.83,422.24" z_order="0">
+      <attribute name="blizina">zelo_blizu</attribute>
+    </polygon>
+    <polygon frame="40" keyframe="1" outside="1" occluded="0" points="1310.87,438.48;1263.50,473.67;1266.21,503.44;1309.52,523.75;1350.12,948.71;1522.00,989.31;1634.33,944.65;1677.64,951.41;1695.23,918.93;1696.59,864.80;1678.99,845.85;1650.57,851.26;1654.63,477.73;1676.29,460.14;1653.28,426.30;1532.83,422.24" z_order="0">
+      <attribute name="blizina">zelo_blizu</attribute>
+    </polygon>
+  </track>
+  <track id="98" label="ostalo" source="manual">
+    <polygon frame="39" keyframe="1" outside="0" occluded="0" points="1549.07,414.12;1737.19,410.06;1791.32,419.53;1807.56,452.02;1791.32,472.32;1776.44,786.30;1811.63,784.95;1811.63,852.62;1785.91,872.92;1706.06,901.34;1689.82,849.91;1658.69,852.62;1662.75,484.50;1678.99,462.84;1657.34,424.95" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+    <polygon frame="40" keyframe="1" outside="1" occluded="0" points="1549.07,414.12;1737.19,410.06;1791.32,419.53;1807.56,452.02;1791.32,472.32;1776.44,786.30;1811.63,784.95;1811.63,852.62;1785.91,872.92;1706.06,901.34;1689.82,849.91;1658.69,852.62;1662.75,484.50;1678.99,462.84;1657.34,424.95" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+  </track>
+  <track id="99" label="ostalo" source="manual">
+    <polygon frame="39" keyframe="1" outside="0" occluded="0" points="1677.74,0.00;1678.99,52.77;1692.53,152.92;1678.99,274.72;1676.29,399.23;1674.93,410.06;1784.56,416.83;1808.92,434.42;1803.50,461.49;1794.03,473.67;1772.38,783.59;1920.00,800.13;1920.00,0.00" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+    <polygon frame="40" keyframe="1" outside="1" occluded="0" points="1677.74,0.00;1678.99,52.77;1692.53,152.92;1678.99,274.72;1676.29,399.23;1674.93,410.06;1784.56,416.83;1808.92,434.42;1803.50,461.49;1794.03,473.67;1772.38,783.59;1920.00,800.13;1920.00,0.00" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+  </track>
+  <track id="100" label="ostalo" source="manual">
+    <polygon frame="40" keyframe="1" outside="0" occluded="0" points="617.94,396.53;632.83,760.59;709.97,732.17;695.08,388.41" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+    <polygon frame="41" keyframe="1" outside="1" occluded="0" points="617.94,396.53;632.83,760.59;709.97,732.17;695.08,388.41" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+  </track>
+  <track id="101" label="ostalo" source="manual">
+    <polygon frame="40" keyframe="1" outside="0" occluded="0" points="1920.00,397.30;1543.66,410.06;1501.70,435.78;1446.21,470.96;1436.74,500.74;1511.17,568.41;1547.94,1080.00;1920.00,1080.00" z_order="0">
+      <attribute name="blizina">zelo_blizu</attribute>
+    </polygon>
+    <polygon frame="41" keyframe="1" outside="1" occluded="0" points="1920.00,397.30;1543.66,410.06;1501.70,435.78;1446.21,470.96;1436.74,500.74;1511.17,568.41;1547.94,1080.00;1920.00,1080.00" z_order="0">
+      <attribute name="blizina">zelo_blizu</attribute>
+    </polygon>
+  </track>
+  <track id="102" label="ostalo" source="manual">
+    <polygon frame="41" keyframe="1" outside="0" occluded="0" points="742.97,368.78;751.09,825.14;840.41,800.78;835.54,363.91" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+    <polygon frame="42" keyframe="1" outside="1" occluded="0" points="742.97,368.78;751.09,825.14;840.41,800.78;835.54,363.91" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+  </track>
+  <track id="103" label="ostalo" source="manual">
+    <polygon frame="42" keyframe="1" outside="0" occluded="0" points="1155.48,347.67;1161.97,953.44;1298.40,927.46;1278.91,341.17" z_order="0">
+      <attribute name="blizina">zelo_blizu</attribute>
+    </polygon>
+    <polygon frame="43" keyframe="1" outside="1" occluded="0" points="1155.48,347.67;1161.97,953.44;1298.40,927.46;1278.91,341.17" z_order="0">
+      <attribute name="blizina">zelo_blizu</attribute>
+    </polygon>
+  </track>
+  <track id="104" label="vozila" source="manual">
+    <polygon frame="43" keyframe="1" outside="0" occluded="0" points="0.00,213.19;70.61,186.89;387.30,199.88;549.70,233.99;656.89,297.32;738.09,380.15;777.07,396.39;832.29,399.64;889.13,471.10;902.12,531.19;898.88,562.05;850.15,581.54;842.03,627.01;772.20,635.13;729.97,597.78;280.11,644.87;249.25,701.72;190.79,730.95;119.33,716.33;67.36,678.98;0.00,684.06" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+    <polygon frame="44" keyframe="1" outside="1" occluded="0" points="0.00,213.19;70.61,186.89;387.30,199.88;549.70,233.99;656.89,297.32;738.09,380.15;777.07,396.39;832.29,399.64;889.13,471.10;902.12,531.19;898.88,562.05;850.15,581.54;842.03,627.01;772.20,635.13;729.97,597.78;280.11,644.87;249.25,701.72;190.79,730.95;119.33,716.33;67.36,678.98;0.00,684.06" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+  </track>
+  <track id="105" label="vozila" source="manual">
+    <polygon frame="44" keyframe="1" outside="0" occluded="0" points="413.28,206.38;323.96,227.49;302.85,281.08;283.36,367.16;281.73,544.18;286.61,654.62;330.46,688.72;418.15,716.33;478.24,734.20;522.09,761.81;577.31,778.05;642.27,750.44;668.26,680.60;861.52,661.11;1061.28,646.50;1171.72,631.88;1194.46,654.62;1246.43,677.35;1306.52,664.36;1317.88,610.77;1360.11,604.27;1369.85,537.69;1351.99,467.85;1296.77,414.26;1231.81,393.14;1189.58,378.53;1051.54,263.22;967.09,211.25;814.43,182.02;580.56,172.27;440.89,178.77" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+    <polygon frame="45" keyframe="1" outside="1" occluded="0" points="413.28,206.38;323.96,227.49;302.85,281.08;283.36,367.16;281.73,544.18;286.61,654.62;330.46,688.72;418.15,716.33;478.24,734.20;522.09,761.81;577.31,778.05;642.27,750.44;668.26,680.60;861.52,661.11;1061.28,646.50;1171.72,631.88;1194.46,654.62;1246.43,677.35;1306.52,664.36;1317.88,610.77;1360.11,604.27;1369.85,537.69;1351.99,467.85;1296.77,414.26;1231.81,393.14;1189.58,378.53;1051.54,263.22;967.09,211.25;814.43,182.02;580.56,172.27;440.89,178.77" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+  </track>
+  <track id="106" label="vozila" source="manual">
+    <polygon frame="45" keyframe="1" outside="0" occluded="0" points="181.04,172.27;132.32,227.49;132.32,303.82;116.08,414.26;103.09,581.54;101.46,687.10;120.95,758.56;169.67,789.41;244.38,812.15;289.85,807.28;341.82,880.36;364.56,890.11;462.00,893.35;533.46,875.49;575.69,769.93;707.24,752.06;1095.39,711.46;1194.46,693.60;1233.43,737.44;1300.02,739.07;1364.98,734.20;1386.09,667.61;1439.69,652.99;1438.06,531.19;1420.20,479.22;1351.99,415.88;1246.43,388.27;1145.73,307.07;983.33,186.89;809.55,141.41;637.40,128.42;478.24,120.30;278.49,125.17;252.50,159.28" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+    <polygon frame="46" keyframe="1" outside="1" occluded="0" points="181.04,172.27;132.32,227.49;132.32,303.82;116.08,414.26;103.09,581.54;101.46,687.10;120.95,758.56;169.67,789.41;244.38,812.15;289.85,807.28;341.82,880.36;364.56,890.11;462.00,893.35;533.46,875.49;575.69,769.93;707.24,752.06;1095.39,711.46;1194.46,693.60;1233.43,737.44;1300.02,739.07;1364.98,734.20;1386.09,667.61;1439.69,652.99;1438.06,531.19;1420.20,479.22;1351.99,415.88;1246.43,388.27;1145.73,307.07;983.33,186.89;809.55,141.41;637.40,128.42;478.24,120.30;278.49,125.17;252.50,159.28" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+  </track>
+  <track id="107" label="vozila" source="manual">
+    <polygon frame="46" keyframe="1" outside="0" occluded="0" points="405.16,40.72;361.31,50.47;359.69,87.82;286.61,100.81;259.00,133.29;247.63,151.16;224.89,346.05;210.27,472.72;207.03,708.21;200.53,755.31;218.40,854.38;297.97,906.35;354.82,906.35;387.30,919.34;442.52,1018.41;554.58,1024.90;632.53,1013.54;716.98,946.95;754.34,873.87;1267.54,810.53;1572.86,766.68;1623.21,834.89;1701.16,851.13;1790.49,797.54;1814.85,726.08;1868.44,696.84;1870.06,550.68;1811.60,471.10;1759.63,409.38;1629.70,380.15;1584.23,355.79;1412.08,211.25;1233.43,105.69;1093.76,61.84;760.83,34.23" z_order="0">
+      <attribute name="blizina">zelo_blizu</attribute>
+    </polygon>
+    <polygon frame="47" keyframe="1" outside="1" occluded="0" points="405.16,40.72;361.31,50.47;359.69,87.82;286.61,100.81;259.00,133.29;247.63,151.16;224.89,346.05;210.27,472.72;207.03,708.21;200.53,755.31;218.40,854.38;297.97,906.35;354.82,906.35;387.30,919.34;442.52,1018.41;554.58,1024.90;632.53,1013.54;716.98,946.95;754.34,873.87;1267.54,810.53;1572.86,766.68;1623.21,834.89;1701.16,851.13;1790.49,797.54;1814.85,726.08;1868.44,696.84;1870.06,550.68;1811.60,471.10;1759.63,409.38;1629.70,380.15;1584.23,355.79;1412.08,211.25;1233.43,105.69;1093.76,61.84;760.83,34.23" z_order="0">
+      <attribute name="blizina">zelo_blizu</attribute>
+    </polygon>
+  </track>
+  <track id="108" label="vozila" source="manual">
+    <polygon frame="47" keyframe="1" outside="0" occluded="0" points="819.48,0.00;770.58,32.60;729.97,165.78;725.10,365.54;699.12,774.80;691.00,854.38;703.99,945.32;742.97,1007.04;807.93,1031.40;876.14,1063.88;909.62,1080.00;1405.96,1080.00;1390.97,1052.51;1920.00,1031.11;1920.00,0.00" z_order="0">
+      <attribute name="blizina">zelo_blizu</attribute>
+    </polygon>
+    <polygon frame="48" keyframe="1" outside="1" occluded="0" points="819.48,0.00;770.58,32.60;729.97,165.78;725.10,365.54;699.12,774.80;691.00,854.38;703.99,945.32;742.97,1007.04;807.93,1031.40;876.14,1063.88;909.62,1080.00;1405.96,1080.00;1390.97,1052.51;1920.00,1031.11;1920.00,0.00" z_order="0">
+      <attribute name="blizina">zelo_blizu</attribute>
+    </polygon>
+  </track>
+  <track id="109" label="vozila" source="manual">
+    <polygon frame="48" keyframe="1" outside="0" occluded="0" points="1920.00,40.13;1902.55,73.20;1879.81,182.02;1845.70,640.00;1831.09,739.07;1826.21,927.46;1847.33,1050.89;1873.91,1080.00;1920.00,1080.00" z_order="0">
+      <attribute name="blizina">zelo_blizu</attribute>
+    </polygon>
+    <polygon frame="49" keyframe="1" outside="1" occluded="0" points="1920.00,40.13;1902.55,73.20;1879.81,182.02;1845.70,640.00;1831.09,739.07;1826.21,927.46;1847.33,1050.89;1873.91,1080.00;1920.00,1080.00" z_order="0">
+      <attribute name="blizina">zelo_blizu</attribute>
+    </polygon>
+  </track>
+  <track id="110" label="ostalo" source="manual">
+    <polygon frame="48" keyframe="1" outside="0" occluded="0" points="723.48,427.25;720.23,552.30;915.12,542.56;915.12,425.63" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+    <polygon frame="49" keyframe="1" outside="1" occluded="0" points="723.48,427.25;720.23,552.30;915.12,542.56;915.12,425.63" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+  </track>
+  <track id="111" label="ostalo" source="manual">
+    <polygon frame="48" keyframe="1" outside="0" occluded="0" points="1015.81,253.47;986.58,372.03;978.46,495.46;973.58,524.69;1058.03,537.69;1092.14,516.57;1072.65,445.11;1048.29,276.21" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+    <polygon frame="49" keyframe="1" outside="1" occluded="0" points="1015.81,253.47;986.58,372.03;978.46,495.46;973.58,524.69;1058.03,537.69;1092.14,516.57;1072.65,445.11;1048.29,276.21" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+  </track>
+  <track id="112" label="ostalo" source="manual">
+    <polygon frame="48" keyframe="1" outside="0" occluded="0" points="1127.87,469.47;1110.00,501.96;1100.26,529.57;1173.34,539.31;1215.57,516.57;1196.08,495.46;1170.09,492.21;1155.48,466.23" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+    <polygon frame="49" keyframe="1" outside="1" occluded="0" points="1127.87,469.47;1110.00,501.96;1100.26,529.57;1173.34,539.31;1215.57,516.57;1196.08,495.46;1170.09,492.21;1155.48,466.23" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+  </track>
+  <track id="113" label="ostalo" source="manual">
+    <polygon frame="49" keyframe="1" outside="0" occluded="0" points="1316.26,432.12;1317.88,568.54;1545.25,565.29;1543.63,427.25" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+    <polygon frame="50" keyframe="1" outside="1" occluded="0" points="1316.26,432.12;1317.88,568.54;1545.25,565.29;1543.63,427.25" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+  </track>
+  <track id="114" label="ostalo" source="manual">
+    <polygon frame="49" keyframe="1" outside="0" occluded="0" points="1660.56,232.36;1634.58,285.96;1619.96,386.65;1615.09,427.25;1597.22,471.10;1605.34,544.18;1632.95,555.55;1697.91,550.68;1738.52,534.44;1749.88,505.20;1725.52,464.60;1722.27,373.66;1697.91,263.22" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+    <polygon frame="50" keyframe="1" outside="1" occluded="0" points="1660.56,232.36;1634.58,285.96;1619.96,386.65;1615.09,427.25;1597.22,471.10;1605.34,544.18;1632.95,555.55;1697.91,550.68;1738.52,534.44;1749.88,505.20;1725.52,464.60;1722.27,373.66;1697.91,263.22" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+  </track>
+  <track id="115" label="ostalo" source="manual">
+    <polygon frame="49" keyframe="1" outside="0" occluded="0" points="1803.48,487.34;1798.61,513.32;1767.75,526.32;1771.00,553.93;1855.45,557.17;1897.67,547.43;1896.05,514.95;1861.94,508.45;1848.95,482.47" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+    <polygon frame="50" keyframe="1" outside="1" occluded="0" points="1803.48,487.34;1798.61,513.32;1767.75,526.32;1771.00,553.93;1855.45,557.17;1897.67,547.43;1896.05,514.95;1861.94,508.45;1848.95,482.47" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+  </track>
+  <track id="116" label="ostalo" source="manual">
+    <polygon frame="50" keyframe="1" outside="0" occluded="0" points="1920.00,424.40;1814.85,430.50;1805.10,583.16;1918.79,591.28;1920.00,566.28" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+    <polygon frame="51" keyframe="1" outside="1" occluded="0" points="1920.00,424.40;1814.85,430.50;1805.10,583.16;1918.79,591.28;1920.00,566.28" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+  </track>
+  <track id="117" label="ostalo" source="manual">
+    <polygon frame="50" keyframe="1" outside="0" occluded="0" points="312.59,220.99;322.34,717.96;1631.33,599.40;1619.96,320.06" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+    <polygon frame="51" keyframe="1" outside="1" occluded="0" points="312.59,220.99;322.34,717.96;1631.33,599.40;1619.96,320.06" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+  </track>
+  <track id="118" label="ostalo" source="manual">
+    <polygon frame="51" keyframe="1" outside="0" occluded="0" points="699.12,198.26;695.87,737.44;1619.96,677.35;1608.59,263.22" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+    <polygon frame="52" keyframe="1" outside="1" occluded="0" points="699.12,198.26;695.87,737.44;1619.96,677.35;1608.59,263.22" z_order="0">
+      <attribute name="blizina">dalec</attribute>
+    </polygon>
+  </track>
+  <track id="119" label="ostalo" source="manual">
+    <polygon frame="51" keyframe="1" outside="0" occluded="0" points="0.00,844.68;197.28,802.41;111.21,576.66;83.60,193.38;81.97,79.70;121.17,0.00;0.00,0.00" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+    <polygon frame="52" keyframe="1" outside="1" occluded="0" points="0.00,844.68;197.28,802.41;111.21,576.66;83.60,193.38;81.97,79.70;121.17,0.00;0.00,0.00" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+  </track>
+  <track id="120" label="ostalo" source="manual">
+    <polygon frame="52" keyframe="1" outside="0" occluded="0" points="99.84,401.26;8.89,469.47;18.64,510.08;91.72,544.18;101.46,589.66;119.91,1080.00;628.11,1080.00;632.53,1031.40;622.79,974.56;582.18,974.56;588.68,487.34;614.67,453.23;585.43,411.01;447.39,394.77" z_order="0">
+      <attribute name="blizina">zelo_blizu</attribute>
+    </polygon>
+  </track>
+  <track id="121" label="ostalo" source="manual">
+    <polygon frame="52" keyframe="1" outside="0" occluded="0" points="538.33,404.51;676.38,407.76;716.98,438.62;702.37,480.84;687.75,849.51;718.61,852.75;716.98,942.08;686.12,961.57;632.53,998.92;606.55,969.69;590.30,968.06;591.93,480.84;626.03,448.36;591.93,412.63" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+  </track>
+  <track id="122" label="ostalo" source="manual">
+    <polygon frame="52" keyframe="1" outside="0" occluded="0" points="526.57,0.00;551.33,95.94;548.08,220.99;533.46,404.51;666.64,404.51;720.23,440.24;700.74,487.34;682.88,841.38;767.33,839.76;866.40,815.40;971.96,794.29;919.99,709.84;866.40,339.55;868.02,118.68;876.92,0.00" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+  </track>
+  <track id="123" label="ostalo" source="manual">
+    <polygon frame="52" keyframe="1" outside="0" occluded="0" points="1506.28,130.05;1493.28,747.19;1920.00,745.64;1920.00,136.31" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+  </track>
+  <track id="124" label="ostalo" source="manual">
+    <polygon frame="53" keyframe="1" outside="0" occluded="0" points="252.50,381.78;260.62,844.63;367.81,818.65;356.44,375.28" z_order="0">
+      <attribute name="blizina">blizu</attribute>
+    </polygon>
+  </track>
+  <track id="125" label="ostalo" source="manual">
+    <polygon frame="53" keyframe="1" outside="0" occluded="0" points="1920.00,395.17;1514.40,414.26;1447.81,441.87;1366.61,508.45;1355.24,562.05;1426.70,601.02;1462.43,648.12;1496.36,1080.00;1920.00,1080.00" z_order="0">
+      <attribute name="blizina">zelo_blizu</attribute>
+    </polygon>
+  </track>
+</annotations>
