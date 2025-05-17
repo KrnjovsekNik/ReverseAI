@@ -1,0 +1,9 @@
+unprocessed/*
+
+data/**/train/*
+data/**/val/*
+data/**/test/*
+
+!data/**/train/.gitkeep
+!data/**/val/.gitkeep
+!data/**/test/.gitkeep

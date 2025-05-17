@@ -1,7 +1,6 @@
 conda create -n ovire_yolo python=3.10 -y
 conda activate ovire_yolo
-pip install ultralytics opencv-python
-pip install notebook
+pip install ultralytics opencv-python notebook albumentations
 jupyter-notebook
 --> ustvari mapo ReverseAI
 cd ReverseAI

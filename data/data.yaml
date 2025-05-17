@@ -1,6 +1,7 @@
 path: .
 train: images/train
-val: images/train
+val: images/val
+test: images/test
 
 nc: 9
 names: [
