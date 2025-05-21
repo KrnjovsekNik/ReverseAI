@@ -1,0 +1,12 @@
+# Absolutna pot do glavne mape z vašimi podatki
+path: C:/Users/nikkr/ReverseAI  # Uporabite poševnice namesto obratnih poševnic za poti
+
+# Relativne poti znotraj glavne mape
+train: data/images/train  # relativna pot do mape s slikami za treniranje
+val: data/images/val  # relativna pot do mape s slikami za validacijo
+
+# Vaši razredi
+nc: 9  # število vseh razredov
+names: ['oseba_zelo_blizu', 'oseba_blizu', 'oseba_dalec',
+        'vozilo_zelo_blizu', 'vozilo_blizu', 'vozilo_dalec',
+        'ostalo_zelo_blizu', 'ostalo_blizu', 'ostalo_dalec']
