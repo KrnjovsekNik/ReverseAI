@@ -11,6 +11,7 @@ git commit -m "commit_ime"
 git push -u origin master
 --> za ostale git clone git clone https://github.com/KrnjovsekNik/ReverseAI.git
 
+<<<<<<< HEAD
 git branchi:
 git checkout -b nova-funcijonalnost
 git add .
@@ -21,3 +22,11 @@ git checkout main
 git pull origin main
 git merge nova-funkcionalnost
 git push origin main
+=======
+moreš imet odprt docker app
+docker-compose up --build
+Da zaženeš kamer client:
+python3 camera_mqtt.py
+ko končaš
+docker-compose down 
+>>>>>>> 544f5f85ef9d780b00530458aaabebee569a5345

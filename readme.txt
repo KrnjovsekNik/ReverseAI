@@ -21,3 +21,11 @@ git checkout main
 git pull origin main
 git merge nova-funkcionalnost
 git push origin main
+
+
+moreš imet odprt docker app
+docker-compose up --build
+Da zaženeš kamer client:
+python3 camera_mqtt.py
+ko končaš
+docker-compose down 

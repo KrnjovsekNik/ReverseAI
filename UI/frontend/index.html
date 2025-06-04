@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>YOLOv8 Detekcije</title>
+    <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+    <style>
+        img {
+            max-width: 600px;
+            border: 2px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <h1>Detekcije</h1>
+    <img id="detectedImage" src=""/>
+    <pre id="output">Čakam podatke...</pre>
+
+    <script>
+        const client = mqtt.connect('ws://localhost:9001');
+
+        client.on('connect', () => {
+            console.log('Povezan na MQTT');
+            client.subscribe('camera/results');
+        });
+
+        client.on('message', (topic, message) => {
+        const data = JSON.parse(message.toString());
+
+        if (data.image) {
+            const img = document.getElementById('detectedImage');
+            img.src = 'data:image/jpeg;base64,' + data.image;
+        }
+
+        document.getElementById('output').innerText = JSON.stringify(data.detections, null, 2);
+    });
+    </script>
+</body>
+</html>
