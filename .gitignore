@@ -1,5 +1,7 @@
 unprocessed/*
 
+.ipynb_checkpoints/
+
 data/**/train/*
 data/**/val/*
 data/**/test/*
