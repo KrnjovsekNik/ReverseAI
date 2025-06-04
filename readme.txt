@@ -10,3 +10,10 @@ git add .
 git commit -m "commit_ime"
 git push -u origin master
 --> za ostale git clone git clone https://github.com/KrnjovsekNik/ReverseAI.git
+
+moreš imet odprt docker app
+docker-compose up --build
+Da zaženeš kamer client:
+python3 camera_mqtt.py
+ko končaš
+docker-compose down 

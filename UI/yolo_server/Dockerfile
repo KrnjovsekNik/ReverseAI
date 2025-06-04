@@ -1,0 +1,12 @@
+FROM python:3.10-slim
+
+WORKDIR /app
+
+RUN apt update && apt install -y git ffmpeg libsm6 libxext6
+
+RUN pip install --no-cache-dir ultralytics opencv-python paho-mqtt numpy
+
+COPY yolo_mqtt.py .
+COPY best.pt .
+
+CMD ["python", "yolo_mqtt.py"]
