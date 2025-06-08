@@ -4,6 +4,7 @@ data/**/train/*
 data/**/val/*
 data/**/test/*
 
+.ipynb_checkpoints/
 !data/**/train/.gitkeep
 !data/**/val/.gitkeep
 !data/**/test/.gitkeep
