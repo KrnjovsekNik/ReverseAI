@@ -13,6 +13,7 @@ import io
 
 # YOLO model
 model = YOLO("best.pt")
+conf_treshold = 0.5
 
 # Razdaljni model
 class DistanceModel(nn.Module):
@@ -40,7 +41,7 @@ class DistanceModel(nn.Module):
 # Naloži razdaljni model
 device = torch.device("cpu")
 distance_model = DistanceModel().to(device)
-distance_model.load_state_dict(torch.load("model_distance.pth", map_location=device))
+distance_model.load_state_dict(torch.load("model_distance2.pth", map_location=device))
 distance_model.eval()
 
 # Transform za PIL sliko
@@ -80,6 +81,8 @@ def on_message(client, userdata, msg):
         for box in results.boxes:
             cls = int(box.cls[0])
             conf = float(box.conf[0])
+            if conf < conf_treshold:
+                continue
             x1, y1, x2, y2 = map(int, box.xyxy[0])
 
             label = model.names[cls]
@@ -89,18 +92,37 @@ def on_message(client, userdata, msg):
                 "box": [x1, y1, x2, y2]
             }
 
-            if label == "oseba":
+            # Privzeta barva in opaciteta
+            color = (0, 165, 255)  # oranžna
+            opacity = 0.1
+
+            distance = None
+            if label.startswith("oseba") or label.startswith("vozilo"):
                 try:
                     distance = estimate_distance(pil_image, x1, y1, x2, y2)
                     det_data["distance_m"] = distance
                 except Exception as e:
                     print("Napaka pri napovedi razdalje:", e)
 
+            # Logika za barvo in opaciteto
+            if label.startswith("oseba"):
+                color = (0, 0, 255)  # rdeča
+            elif label.startswith("vozilo"):
+                color = (0, 255, 255)  # rumena
+
+            if label.endswith("zelo_blizu"):
+                opacity = 0.4
+            elif label.endswith("blizu"):
+                opacity = 0.2
+            elif label.endswith("dalec"):
+                opacity = 0.1
+
+            overlay = frame.copy()
+            cv2.rectangle(overlay, (x1, y1), (x2, y2), color, -1)
+            cv2.addWeighted(overlay, opacity, frame, 1 - opacity, 0, frame)
+
             detections.append(det_data)
 
-            cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 255, 0), 2)
-            cv2.putText(frame, label, (x1, y1 - 10),
-                        cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 0), 2)
 
         _, buffer = cv2.imencode('.jpg', frame)
         img_base64 = base64.b64encode(buffer).decode('utf-8')
