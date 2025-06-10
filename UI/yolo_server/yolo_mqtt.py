@@ -10,9 +10,22 @@ from torchvision import transforms
 from torchvision.models import resnet18, ResNet18_Weights
 from PIL import Image
 import io
+from prometheus_client import start_http_server, Counter, Gauge
+import time
+
+# Prometheus metriki
+processed_frames = Counter("processed_frames_total", "Skupno število obdelanih sličic")
+recognized_people = Counter("recognized_people_total", "Skupno število razpoznanih oseb")
+processing_time = Gauge("frame_processing_seconds", "Čas obdelave sličice (v sekundah)")
+frames_per_second = Gauge("frames_per_second", "Sličice na sekundo")
 
 # YOLO model
 model = YOLO("best.pt")
+start_http_server(8000)
+
+# Spremenljivki za sledenje FPS
+last_frame_time = time.time()
+frame_count = 0
 
 # Razdaljni model
 class DistanceModel(nn.Module):
@@ -63,9 +76,29 @@ def estimate_distance(pil_img, x1, y1, x2, y2):
         prediction = distance_model(img_tensor, bbox_tensor)
     return round(prediction.item(), 2)
 
+def calculate_fps():
+    """Izračuna FPS na podlagi časa med sličicami"""
+    global last_frame_time, frame_count
+    
+    current_time = time.time()
+    time_diff = current_time - last_frame_time
+    
+    if time_diff > 1.0:  # Posodobi FPS vsako sekundo
+        fps = frame_count / time_diff
+        frames_per_second.set(fps)
+        frame_count = 0
+        last_frame_time = current_time
+    else:
+        frame_count += 1
+
 # MQTT obdelava
 def on_message(client, userdata, msg):
+    start_time = time.time()
     try:
+        # Poveča štetje obdelanih sličic
+        processed_frames.inc()
+        
+        person_count = 0
         img_bytes = base64.b64decode(msg.payload)
         img_array = np.frombuffer(img_bytes, dtype=np.uint8)
         frame = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
@@ -89,8 +122,9 @@ def on_message(client, userdata, msg):
                 "box": [x1, y1, x2, y2]
             }
 
-            if label == "oseba":
+            if label.startswith("oseba"):
                 try:
+                    person_count += 1
                     distance = estimate_distance(pil_image, x1, y1, x2, y2)
                     det_data["distance_m"] = distance
                 except Exception as e:
@@ -102,22 +136,55 @@ def on_message(client, userdata, msg):
             cv2.putText(frame, label, (x1, y1 - 10),
                         cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 0), 2)
 
+        # Poveča štetje razpoznanih oseb (POPRAVLJENO)
+        if person_count > 0:
+            recognized_people.inc(person_count)
+
         _, buffer = cv2.imencode('.jpg', frame)
         img_base64 = base64.b64encode(buffer).decode('utf-8')
 
         result_message = {
             "image": img_base64,
-            "detections": detections
+            "detections": detections,
+            "person_count": person_count  # Dodaj tudi število oseb v sporočilo
         }
 
         client.publish("camera/results", json.dumps(result_message))
 
     except Exception as e:
         print("Napaka pri obdelavi slike:", e)
+    finally:
+        # Nastavi čas obdelave (POPRAVLJENO - premaknjeno v finally blok)
+        end_time = time.time()
+        processing_time.set(end_time - start_time)
+        
+        # Izračunaj in posodobi FPS
+        calculate_fps()
 
 # MQTT client setup
+def on_connect(client, userdata, flags, rc):
+    if rc == 0:
+        print("Povezan z MQTT brokerjem")
+        print(f"Prometheus metriki dostopne na http://localhost:8000")
+    else:
+        print(f"Napaka pri povezavi z MQTT: {rc}")
+
+def on_disconnect(client, userdata, rc):
+    print("Prekinjena povezava z MQTT brokerjem")
+
 client = mqtt.Client()
-client.connect("mqtt", 1883, 60)
-client.subscribe("camera/image")
+client.on_connect = on_connect
+client.on_disconnect = on_disconnect
 client.on_message = on_message
-client.loop_forever()
+
+try:
+    client.connect("mqtt", 1883, 60)
+    client.subscribe("camera/image")
+    print("Začenjam poslušanje MQTT sporočil...")
+    client.loop_forever()
+except KeyboardInterrupt:
+    print("Prekinitev s tipkovnico")
+    client.disconnect()
+except Exception as e:
+    print(f"Napaka: {e}")
+    client.disconnect()

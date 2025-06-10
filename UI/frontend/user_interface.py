@@ -50,7 +50,7 @@ def on_message(client, userdata, msg):
 
 def mqtt_thread():
     client = mqtt.Client()
-    client.connect("mqtt", 1883, 60)  # ali "mqtt" če si v Dockerju
+    client.connect("localhost", 1883, 60)  # ali "mqtt" če si v Dockerju
     client.subscribe("camera/results")
     client.on_message = on_message
     client.loop_forever()
