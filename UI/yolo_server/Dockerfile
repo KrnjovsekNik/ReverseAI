@@ -10,5 +10,7 @@ RUN pip install prometheus_client
 COPY yolo_mqtt.py .
 COPY best.pt .
 COPY model_distance.pth .
+COPY model_distance2.pth .
+
 
 CMD ["python", "yolo_mqtt.py"]
