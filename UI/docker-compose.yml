@@ -5,9 +5,11 @@ services:
     image: eclipse-mosquitto
     ports:
       - "1883:1883"
-      - "9001:9001"
     volumes:
-      - ./mosquitto_config:/mosquitto/config
+      - ./mosquitto_config:/etc/mosquitto                                   
+      - ./mosquitto_config/mosquitto.conf:/mosquitto/config/mosquitto.conf
+    networks:
+      - mqtt-net
 
   yolo_server:
     build: ./yolo_server
@@ -15,6 +17,8 @@ services:
       - mqtt
     environment:
       - MQTT_HOST=mqtt
+    networks:
+      - mqtt-net
 
   node-exporter:
     image: prom/node-exporter
@@ -22,40 +26,54 @@ services:
     ports:
       - "9100:9100"
     networks:
-      - default
+      - mqtt-net
 
   prometheus:
     image: prom/prometheus
-    volumes:
-      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    container_name: prometheus
     ports:
       - "9090:9090"
-    depends_on:
-      - yolo_server
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    networks:
+      - mqtt-net
 
   grafana:
     image: grafana/grafana
+    container_name: grafana
     ports:
-      - "3000:3000"
+     - "3000:3000"
     volumes:
-      - grafana_data:/var/lib/grafana
-    depends_on:
-      - prometheus
+    - ./grafana_data:/var/lib/grafana
+    networks:
+      - mqtt-net
+
+  exporter:
+    image: sapcc/mosquitto-exporter
+    container_name: mosquitto-exporter
+    ports:
+      - "9234:9234"
+    environment:
+      - "BROKER_ENDPOINT=tcp://mqtt:1883"
+    networks:
+      - mqtt-net
 
   cadvisor:
-    image: gcr.io/cadvisor/cadvisor:latest
-    ports:
-      - "8080:8080"
-    volumes:
-      - /:/rootfs:ro
-      - /var/run:/var/run:rw
-      - /sys:/sys:ro
-      - /var/lib/docker/:/var/lib/docker:ro
-    depends_on:
-      - mqtt
+      image: gcr.io/cadvisor/cadvisor:latest
+      container_name: cadvisor
+      privileged: true
+      ports:
+        - "8080:8080"
+      volumes:
+        - /:/rootfs:ro
+        - /var/run:/var/run:ro
+        - /sys:/sys:ro
+        - /var/lib/docker/:/var/lib/docker:ro
+      networks:
+        - mqtt-net
 
-volumes:
-    grafana_data:
-
-
-
+networks:           
+  mqtt-net:
+    name: mqtt-net

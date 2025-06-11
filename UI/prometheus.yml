@@ -14,4 +14,10 @@ scrape_configs:
     static_configs:
       - targets: ['node-exporter:9100']
 
+  - job_name: "mqtt"
+    static_configs:
+      - targets: ['exporter:9234']
 
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['prometheus:9090']

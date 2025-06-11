@@ -13,25 +13,21 @@ import io
 from prometheus_client import start_http_server, Counter, Gauge
 import time
 
-# Prometheus metriki
 processed_frames = Counter("processed_frames_total", "Skupno število obdelanih sličic")
 recognized_people = Counter("recognized_people_total", "Skupno število razpoznanih oseb")
 processing_time = Gauge("frame_processing_seconds", "Čas obdelave sličice (v sekundah)")
 frames_per_second = Gauge("frames_per_second", "Sličice na sekundo")
+recognized_vehicle = Counter("recognized_vehicle_total", "Skupno število razpoznanih vozil")
+recognized_others = Counter("recognized_others_total", "Skupno število razpoznanih ostalih objektov")
 
-# YOLO model
+
 model = YOLO("best.pt")
-<<<<<<< HEAD
 start_http_server(8000)
 
-# Spremenljivki za sledenje FPS
 last_frame_time = time.time()
 frame_count = 0
-=======
-conf_treshold = 0.5
->>>>>>> 374ef6d7635d62d007db68058a4aa478cede2802
+conf_treshold = 0.8
 
-# Razdaljni model
 class DistanceModel(nn.Module):
     def __init__(self):
         super().__init__()
@@ -54,13 +50,11 @@ class DistanceModel(nn.Module):
         combined = torch.cat((image_feat, bbox_feat), dim=1)
         return self.final_fc(combined).squeeze()
 
-# Naloži razdaljni model
 device = torch.device("cpu")
 distance_model = DistanceModel().to(device)
 distance_model.load_state_dict(torch.load("model_distance2.pth", map_location=device))
 distance_model.eval()
 
-# Transform za PIL sliko
 transform = transforms.Compose([
     transforms.Resize((224, 224)),
     transforms.ToTensor()
@@ -87,7 +81,7 @@ def calculate_fps():
     current_time = time.time()
     time_diff = current_time - last_frame_time
     
-    if time_diff > 1.0:  # Posodobi FPS vsako sekundo
+    if time_diff > 1.0:
         fps = frame_count / time_diff
         frames_per_second.set(fps)
         frame_count = 0
@@ -95,14 +89,14 @@ def calculate_fps():
     else:
         frame_count += 1
 
-# MQTT obdelava
 def on_message(client, userdata, msg):
     start_time = time.time()
     try:
-        # Poveča štetje obdelanih sličic
         processed_frames.inc()
         
         person_count = 0
+        vehicle_count = 0
+        others_count = 0
         img_bytes = base64.b64decode(msg.payload)
         img_array = np.frombuffer(img_bytes, dtype=np.uint8)
         frame = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
@@ -111,7 +105,6 @@ def on_message(client, userdata, msg):
         results = model(frame)[0]
         detections = []
 
-        # Pretvori OpenCV sliko v PIL za razdaljni model
         pil_image = Image.fromarray(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))
 
         for box in results.boxes:
@@ -128,16 +121,11 @@ def on_message(client, userdata, msg):
                 "box": [x1, y1, x2, y2]
             }
 
-<<<<<<< HEAD
-            if label.startswith("oseba"):
-=======
-            # Privzeta barva in opaciteta
-            color = (0, 165, 255)  # oranžna
+            color = (0, 165, 255)
             opacity = 0.1
 
             distance = None
-            if label.startswith("oseba") or label.startswith("vozilo"):
->>>>>>> 374ef6d7635d62d007db68058a4aa478cede2802
+            if label.startswith("oseba"):
                 try:
                     person_count += 1
                     distance = estimate_distance(pil_image, x1, y1, x2, y2)
@@ -145,11 +133,13 @@ def on_message(client, userdata, msg):
                 except Exception as e:
                     print("Napaka pri napovedi razdalje:", e)
 
-            # Logika za barvo in opaciteto
             if label.startswith("oseba"):
-                color = (0, 0, 255)  # rdeča
+                color = (0, 0, 255)
             elif label.startswith("vozilo"):
-                color = (0, 255, 255)  # rumena
+                vehicle_count+=1
+                color = (0, 255, 255)
+            elif label.startswith("ostalo"):
+                others_count +=1
 
             if label.endswith("zelo_blizu"):
                 opacity = 0.4
@@ -165,9 +155,14 @@ def on_message(client, userdata, msg):
             detections.append(det_data)
 
 
-        # Poveča štetje razpoznanih oseb (POPRAVLJENO)
         if person_count > 0:
             recognized_people.inc(person_count)
+
+        if vehicle_count > 0:
+            recognized_vehicle.inc(vehicle_count)
+
+        if others_count > 0:
+            recognized_others.inc(others_count)
 
         _, buffer = cv2.imencode('.jpg', frame)
         img_base64 = base64.b64encode(buffer).decode('utf-8')
@@ -175,7 +170,7 @@ def on_message(client, userdata, msg):
         result_message = {
             "image": img_base64,
             "detections": detections,
-            "person_count": person_count  # Dodaj tudi število oseb v sporočilo
+            "person_count": person_count
         }
 
         client.publish("camera/results", json.dumps(result_message))
@@ -183,14 +178,11 @@ def on_message(client, userdata, msg):
     except Exception as e:
         print("Napaka pri obdelavi slike:", e)
     finally:
-        # Nastavi čas obdelave (POPRAVLJENO - premaknjeno v finally blok)
         end_time = time.time()
         processing_time.set(end_time - start_time)
         
-        # Izračunaj in posodobi FPS
         calculate_fps()
 
-# MQTT client setup
 def on_connect(client, userdata, flags, rc):
     if rc == 0:
         print("Povezan z MQTT brokerjem")
