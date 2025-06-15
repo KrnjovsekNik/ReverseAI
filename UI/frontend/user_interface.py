@@ -24,10 +24,9 @@ def play_alarm_pattern():
     try:
         wave_obj = sa.WaveObject.from_wave_file("alarm.wav")
         while not stop_threads:
-            #print(alarm_active)
             if alarm_active:
                 play_obj = wave_obj.play()
-                time.sleep(0.5)  # Zamik med ponovitvami
+                time.sleep(0.5)
             else:
                 time.sleep(0.1)
     except Exception as e:
@@ -38,7 +37,6 @@ min_padding = 100
 
 def process_and_display_result(result):
     try:
-        # Prikaz slike
         img_bytes = base64.b64decode(result["image"])
         img_array = np.frombuffer(img_bytes, dtype=np.uint8)
         frame = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
@@ -51,13 +49,11 @@ def process_and_display_result(result):
         video_label.config(image=frame_tk)
         video_label.image = frame_tk
 
-        # Počisti vse stare tekste
         for widget in danger_label_frame.winfo_children():
             widget.destroy()
 
         detections = result.get("detections", [])
 
-        # --- LOČIMO OSEBE IN OSTALO ---
         persons = []
         others = []
 
@@ -68,7 +64,6 @@ def process_and_display_result(result):
             else:
                 others.append(det)
 
-        # --- SORTIRANJE: najprej "zelo_blizu", nato "blizu", nato "dalec"
         def sort_by_danger(det):
             label = det.get("class", "")
             level = 3
@@ -136,17 +131,14 @@ def mqtt_thread():
     client.on_message = on_message
     client.loop_forever()
 
-# === GUI ===
 root = tk.Tk()
 root.title("Live Detection")
 root.configure(bg="#4b2994")
 
-# Fiksna širina levega panela (označevanje)
 danger_label_frame = tk.Frame(root, bg="#4b2994", width=300, height=720)
 danger_label_frame.grid(row=0, column=0, sticky="ns")
-danger_label_frame.pack_propagate(False)  # ne prilagajaj velikosti vsebini
+danger_label_frame.pack_propagate(False)
 
-# Video panel (desna stran)
 video_label = tk.Label(root, width=1280, height=720)
 video_label.grid(row=0, column=1)
 
