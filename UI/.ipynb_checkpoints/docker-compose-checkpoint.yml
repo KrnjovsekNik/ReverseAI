@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  mqtt:
+    image: eclipse-mosquitto
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+    volumes:
+      - ./mosquitto_config:/mosquitto/config
+
+  yolo_server:
+    build: ./yolo_server
+    depends_on:
+      - mqtt
+    environment:
+      - MQTT_HOST=mqtt
+

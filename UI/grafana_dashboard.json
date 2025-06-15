@@ -1,0 +1,62 @@
+{
+  "dashboard": {
+    "id": null,
+    "uid": "yolo-monitoring",
+    "title": "YOLO Sistem - Monitoring",
+    "timezone": "browser",
+    "panels": [
+      {
+        "type": "graph",
+        "title": "Obdelane slike na sekundo",
+        "targets": [
+          {
+            "expr": "rate(processed_frames_total[1m])",
+            "interval": "",
+            "refId": "A"
+          }
+        ],
+        "datasource": "Prometheus",
+        "gridPos": { "x": 0, "y": 0, "w": 12, "h": 8 }
+      },
+      {
+        "type": "graph",
+        "title": "Razpoznane osebe na sekundo",
+        "targets": [
+          {
+            "expr": "rate(recognized_people_total[1m])",
+            "refId": "B"
+          }
+        ],
+        "datasource": "Prometheus",
+        "gridPos": { "x": 12, "y": 0, "w": 12, "h": 8 }
+      },
+      {
+        "type": "graph",
+        "title": "CPU poraba (%)",
+        "targets": [
+          {
+            "expr": "rate(node_cpu_seconds_total{mode=\"user\"}[1m]) * 100",
+            "refId": "C"
+          }
+        ],
+        "datasource": "Prometheus",
+        "gridPos": { "x": 0, "y": 8, "w": 12, "h": 8 }
+      },
+      {
+        "type": "graph",
+        "title": "Poraba RAM (MB)",
+        "targets": [
+          {
+            "expr": "(node_memory_MemTotal_bytes - node_memory_MemAvailable_bytes) / 1024 / 1024",
+            "refId": "D"
+          }
+        ],
+        "datasource": "Prometheus",
+        "gridPos": { "x": 12, "y": 8, "w": 12, "h": 8 }
+      }
+    ],
+    "schemaVersion": 27,
+    "version": 1
+  },
+  "overwrite": true
+}

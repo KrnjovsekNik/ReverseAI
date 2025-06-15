@@ -22,4 +22,4 @@ while True:
         _, buffer = cv2.imencode('.jpg', frame)
         img_base64 = base64.b64encode(buffer)
         client.publish("camera/image", img_base64)
-    time.sleep(2)  
+    time.sleep(0.1)  
