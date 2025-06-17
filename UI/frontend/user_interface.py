@@ -1,5 +1,5 @@
 import tkinter as tk
-from PIL import Image, ImageTk
+from PIL import Image, ImageTk, ImageEnhance
 import cv2
 import numpy as np
 import base64
@@ -20,7 +20,6 @@ def on_closing():
 
 def play_alarm_pattern():
     global alarm_active, stop_threads
-
     try:
         wave_obj = sa.WaveObject.from_wave_file("alarm.wav")
         while not stop_threads:
@@ -32,25 +31,87 @@ def play_alarm_pattern():
     except Exception as e:
         print("Napaka pri predvajanju zvoka:", e)
 
+# === GUI ===
+root = tk.Tk()
+root.title("Live Detection")
+root.configure(bg="#e4edec")
+root.geometry("1280x720")
 
-min_padding = 100
+# Glavni canvas za video
+canvas = tk.Canvas(root, bg="#e4edec", highlightthickness=0)
+canvas.pack(fill=tk.BOTH, expand=True)
 
+# Label za najbližjo nevarnost
+top_left_label = tk.Label(root, text="", bg="black", fg="white", font=("Helvetica", 16, "bold"))
+top_left_label.place(x=10, y=10)
+
+# Gumb za nastavitve
+def toggle_sidebar():
+    global sidebar_open
+    sidebar_open = not sidebar_open
+    update_overlay()
+
+settings_button = tk.Button(root, text="⚙️", command=toggle_sidebar, font=("Helvetica", 14))
+settings_button.place(x=200, y=10)
+
+# Overlay za zatemnitev
+overlay = tk.Label(root, bg="black")
+overlay.place_forget()
+
+# Sidebar frame
+sidebar = tk.Frame(root, bg="#e4edec", width=300)
+sidebar.place_forget()
+
+sidebar_open = False
+
+def update_overlay():
+    if sidebar_open:
+        overlay.place(relx=0, rely=0, relwidth=1, relheight=1)
+        overlay.lift()
+        overlay.configure(bg="black")
+        overlay.tkraise()
+
+        canvas.lift()
+        top_left_label.lift()
+        settings_button.lift()
+
+        sidebar.place(relx=1.0, rely=0, relheight=1.0, anchor="ne")
+    else:
+        overlay.place_forget()
+        sidebar.place_forget()
+
+# Dinamično prilagajanje velikosti
+def resize(event):
+    canvas.config(width=event.width, height=event.height)
+
+root.bind("<Configure>", resize)
+
+# Video prikaz
+frame_tk = None
+
+def display_frame(pil_image):
+    global frame_tk
+
+    if sidebar_open:
+        # Zatemni video, če je sidebar odprt
+        enhancer = ImageEnhance.Brightness(pil_image)
+        pil_image = enhancer.enhance(0.5)
+
+    window_width = root.winfo_width()
+    window_height = root.winfo_height()
+    pil_image = pil_image.resize((window_width, window_height), Image.ANTIALIAS)
+
+    frame_tk = ImageTk.PhotoImage(pil_image)
+    canvas.create_image(0, 0, anchor=tk.NW, image=frame_tk)
+
+# ============ PROCESIRANJE ============
 def process_and_display_result(result):
     try:
         img_bytes = base64.b64decode(result["image"])
         img_array = np.frombuffer(img_bytes, dtype=np.uint8)
         frame = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        frame = cv2.resize(frame, (1280, 720))
         frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-
         pil_image = Image.fromarray(frame_rgb)
-        frame_tk = ImageTk.PhotoImage(pil_image)
-
-        video_label.config(image=frame_tk)
-        video_label.image = frame_tk
-
-        for widget in danger_label_frame.winfo_children():
-            widget.destroy()
 
         detections = result.get("detections", [])
 
@@ -78,45 +139,30 @@ def process_and_display_result(result):
 
         all_detections = persons + others
 
-        if not all_detections:
-            tk.Label(danger_label_frame, text="Ni nevarnosti", bg="#4b2994", fg="white",
-                     font=("Helvetica", 12)).pack(anchor='w')
-            global alarm_active
-            alarm_active = False
-            return
-        
+        global alarm_active
         danger_found = False
 
-        for det in all_detections:
-            label = det.get("class", "unknown")
+        if all_detections:
+            closest = all_detections[0]
+            label = closest.get("class", "unknown")
             text = label
+            if label.startswith("oseba") and "distance_m" in closest:
+                text += f": {closest['distance_m']} m"
 
-            if label.startswith("oseba") and "distance_m" in det:
-                text += f": {det['distance_m']} m"
+            top_left_label.config(text=text)
 
             if label.endswith("zelo_blizu"):
-                fg = "red"
-                font = ("Helvetica", 16, "bold")
                 danger_found = True
-            elif label.endswith("blizu"):
-                fg = "white"
-                font = ("Helvetica", 14)
-            else:
-                fg = "white"
-                font = ("Helvetica", 12)
-
-            tk.Label(danger_label_frame, text=text, bg="#4b2994", fg=fg, font=font).pack(anchor='w')
-
-        if danger_found:
-            print("very dangr")
-            alarm_active = True
         else:
-            print("no dengir")
-            alarm_active = False
-                
+            top_left_label.config(text="")
+
+        alarm_active = danger_found
+        display_frame(pil_image)
+
     except Exception as e:
         print("Napaka pri prikazu:", e)
 
+# MQTT
 def on_message(client, userdata, msg):
     try:
         result = json.loads(msg.payload.decode("utf-8"))
@@ -130,17 +176,6 @@ def mqtt_thread():
     client.subscribe("camera/results")
     client.on_message = on_message
     client.loop_forever()
-
-root = tk.Tk()
-root.title("Live Detection")
-root.configure(bg="#4b2994")
-
-danger_label_frame = tk.Frame(root, bg="#4b2994", width=300, height=720)
-danger_label_frame.grid(row=0, column=0, sticky="ns")
-danger_label_frame.pack_propagate(False)
-
-video_label = tk.Label(root, width=1280, height=720)
-video_label.grid(row=0, column=1)
 
 threading.Thread(target=play_alarm_pattern, daemon=True).start()
 threading.Thread(target=mqtt_thread, daemon=True).start()
