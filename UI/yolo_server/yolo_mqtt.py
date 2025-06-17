@@ -26,7 +26,7 @@ start_http_server(8000)
 
 last_frame_time = time.time()
 frame_count = 0
-conf_treshold = 0.8
+conf_treshold = 0.5
 
 class DistanceModel(nn.Module):
     def __init__(self):
