@@ -72,6 +72,21 @@ services:
       networks:
         - mqtt-net
 
+  video-producer:
+    build: ./video_producer
+    command: >
+      python video_mqtt_producer.py
+      --video /videos/test_video.mp4
+      --broker mqtt
+      --topic camera/image
+      --loop
+    volumes:
+      - ./videos:/videos
+    depends_on:
+      - mqtt
+    networks:
+      - mqtt-net
+
 networks:           
   mqtt-net:
     name: mqtt-net

@@ -13,6 +13,9 @@ import io
 from prometheus_client import start_http_server, Counter, Gauge
 import time
 
+torch.set_num_threads(4)
+torch.set_num_interop_threads(1)
+
 processed_frames = Counter("processed_frames_total", "Skupno število obdelanih sličic")
 recognized_people = Counter("recognized_people_total", "Skupno število razpoznanih oseb")
 processing_time = Gauge("frame_processing_seconds", "Čas obdelave sličice (v sekundah)")
@@ -21,7 +24,7 @@ recognized_vehicle = Counter("recognized_vehicle_total", "Skupno število razpoz
 recognized_others = Counter("recognized_others_total", "Skupno število razpoznanih ostalih objektov")
 
 
-model = YOLO("best.pt")
+model = YOLO("best_int8_openvino_model", task="detect")
 start_http_server(8000)
 
 last_frame_time = time.time()

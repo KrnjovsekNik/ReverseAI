@@ -208,11 +208,33 @@ def on_message(client, userdata, msg):
         print("Napaka pri sprejemu MQTT sporočila:", e)
 
 def mqtt_thread():
+    global stop_threads
+
     client = mqtt.Client()
-    client.connect("localhost", 1883, 60)
-    client.subscribe("camera/results")
+
+    def on_connect(client, userdata, flags, rc):
+        if rc == 0:
+            print("MQTT povezan")
+            client.subscribe("camera/results")
+        else:
+            print(f"MQTT napaka pri povezavi, rc={rc}")
+
+    def on_disconnect(client, userdata, rc):
+        print("MQTT povezava prekinjena")
+
+    client.on_connect = on_connect
+    client.on_disconnect = on_disconnect
     client.on_message = on_message
-    client.loop_forever()
+
+    while not stop_threads:
+        try:
+            print("Poskušam se povezati na MQTT ...")
+            client.connect("localhost", 1883, 60)
+            client.loop_forever()
+        except Exception as e:
+            print("MQTT ni na voljo, čakam ...", e)
+            time.sleep(2)
+
 
 threading.Thread(target=play_alarm_pattern, daemon=True).start()
 threading.Thread(target=mqtt_thread, daemon=True).start()

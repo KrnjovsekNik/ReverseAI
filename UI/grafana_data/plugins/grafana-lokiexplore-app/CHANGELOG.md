@@ -1,6 +1,403 @@
 # Changelog
 
-#### 1.0.17
+## 1.0.32
+
+##### Chores
+
+* **ci/cd:**  pin workflow to verison 4.0.0 (#1671) (7f01482e)
+* **deps:**
+  *  update dependency @types/lodash to v4.17.21 (#1661) (a775a87f)
+  *  update dependency @lezer/lr to v1.4.4 (#1660) (e4a528c0)
+  *  update dependency @babel/core to v7.28.5 (#1659) (b5b5fd46)
+  *  update grafana/shared-workflows/ action to (#1655) (5ab50003)
+  *  update grafana/grafana-enterprise:latest docker digest to 96a793a (#1654) (64cc204c)
+  *  update golang:1.24 docker digest to 7b13449 (#1653) (fc3cfde9)
+  *  update actions/checkout digest to 34e1148 (#1652) (534a2df4)
+  *  pin dependencies (#1651) (b80907a9)
+* **renovate:**  remove minimunReleaseAge (#1656) (b8468687)
+* **ci:**  update grafana levitate dependencies (#1646) (00b552bb)
+
+##### New Features
+
+* **fields:**  support `avg_over_time` for `int` fields (#1637) (8a5be4e0)
+* **lokiConfig:**  disable patterns if pattern_ingester_enabled is false (#1669) (b364f56c)
+* **embedded:**  allow hiding time picker (#1666) (0eaab841)
+* **links:**  add sortOrder support (#1649) (85e57038)
+* **time-picker:**  add rolling time window options (#1625) (038e5dfa)
+
+
+## 1.0.31
+
+##### Chores
+
+* **deps-dev:**  bump glob in the npm_and_yarn group across 1 directory (#1638) (787bb202)
+* **ci:**
+  *  update permissions (#1633) (fb786b2b)
+  *  use new token generation (#1619) (075a6415)
+  *  used outputs (#1610) (57575f65)
+  *  update deployment tools wf (#1603) (d4f4af3c)
+*  update nvmrc (#1628) (48aa341e)
+*  hide toast (#1605) (c8a7663d)
+*  comment local live reload (#1607) (1890b8b3)
+*  update playwright (#1606) (acf6cb1b)
+*  update border radii (#1602) (4c353583)
+*  set override modifier (#1599) (0bc9211b)
+* **deps:**
+  *  update dependency style-loader to v3.3.4 (#1614) (d1a05e05)
+  *  update grafana/alloy:latest docker digest to 8c7256f (#1613) (529289ea)
+  *  update golang:1.24 docker digest to 5034fa4 (#1612) (b46d194b)
+  *  pin grafana/plugin-ci-workflows action to ddc6565 (#1611) (d7b4bf10)
+  *  update dependency sass-loader to v13.3.3 (#1594) (7095a5b4)
+  *  update dependency eslint-config-prettier to v8.10.2 (#1593) (f3f2d9b9)
+  *  update golang:1.24 docker digest to 5056a22 (#1592) (552e5e21)
+* **config:**  migrate config renovate.json (#1596) (d8d23822)
+
+##### Documentation Changes
+
+*  Add patterns troubleshooting (#1600) (3055db7b)
+
+##### New Features
+
+* **time-picker:**  filter time ranges that exceed max retention (#1621) (010becaa)
+* **config:**  Support Loki config API endpoint (#1526) (23c627f2)
+* **Dashboards:**  Add to dashboard from any panel (#1608) (2d3d8c3d)
+* **Grafana Assistant:**  Improve context, provide questions, and cleanup (#1598) (c7024136)
+* **Extensions:**  expose a function to create URL to the app dynamically (#1573) (37b60a11)
+
+##### Bug Fixes
+
+* **Table:**  copy from the right source (#1643) (a444b2ac)
+*  logs volume not showing logs without detected_level (#1630) (01a42e4f)
+* **deps:**  update grafana packages (#1615) (b02e67a1)
+
+##### Other Changes
+
+*  bump version to 0.1.4 (#1618) (2742a609)
+
+
+## 1.0.30
+
+##### Chores
+
+* **renovate:**  add renovate.json, pin gha to versions, remove old workflows (#1591) (bfca4fb9)
+* **deps:**
+  *  update dependency @types/testing-library__jest-dom to v5.14.9 (#1587) (a71d0d49)
+  *  update dependency @grafana/plugin-e2e to v2.2.2 (#1585) (b9177b7f)
+  *  update dependency @babel/core to v7.28.4 (#1584) (12bbee06)
+  *  update grafana/shared-workflows/ action to (#1583) (d47ab19c)
+  *  update grafana/shared-workflows/ action to (#1578) (379bbf45)
+  *  pin dependencies (#1577) (e02237b2)
+*  bump @grafana/assistant to 0.1.0 (#1575) (fee5ebb0)
+*  bump @grafana/create-plugin configuration to 5.26.9 (#1559) (9e677349)
+
+##### New Features
+
+* **LogsPanel:**  enable field selector (#1590) (44f217f6)
+* **LogsListScene:**  add defaultDisplayedFields support (#1554) (cf080432)
+* **EmptyLogs:**  add button to fix with assistant (#1571) (01e343da)
+* **table:**  preferences (#1534) (924ebd23)
+
+##### Bug Fixes
+
+* **extensions:**  context.targets null check (#1589) (bdccee20)
+* **deps:**  update github.com/grafana/loki-client-go digest to c42bbdd (#1579) (9e08a22a)
+
+
+## 1.0.29
+
+##### Documentation Changes
+
+*  Update troubleshooting page (#1568) (437a568a)
+*  Update install and troubleshooting (#1564) (657880b3)
+*  update stale readme, fix docker install script (#1565) (fc776d76)
+
+##### Bug Fixes
+
+*  unexpected clear variable behavior (#1567) (089fdfa2)
+*  validate primary label correctly (#1561) (ee12a20b)
+*  fix RegExp.source removing flags, use toString instead (#1563) (a9207d23)
+*  stale urls (#1562) (e2eae8b8)
+
+
+## 1.0.28
+
+##### Chores
+
+*  fix runtime error when viewing label value breakdown (#1552) (e55074b5)
+*  upgrade Scenes and Grafana deps (#1548) (1f4455a7)
+* **docker:**  use grafana version from base docker file, run cp weekly (#1550) (c0955ffa)
+
+##### New Features
+
+* **embedded:**  allow resetting filters (#1549) (d6e536c6)
+*  add expanded log controls state (#1546) (77c9815f)
+*  Asserts insight timeline widget integration (#1543) (ec1c37ad)
+* **VariableLayoutScene:**
+  *  add control to expand and collapse (#1541) (053d8c90)
+  *  add control to expand and collapse (12eee7b1)
+
+##### Bug Fixes
+
+* **volume:**  Y-axis labels not shortened (#1540) (d63e2a32)
+
+##### Other Changes
+
+* **VariableLayoutScene:**  add control to expand and collapse" (f801ae66)
+
+
+## 1.0.27
+
+##### Chores
+
+* **LineFilter:**  increase default width to accommodate for placeholder (#1539) (9ed579a4)
+*  update line filters placeholder (#1538) (4b3e342e)
+*  bump @grafana/create-plugin configuration to 5.26.0 (#1524) (eca1d90a)
+*  add tenant id to generator, and enable auth in loki (#1519) (6ff03d0a)
+*  downgrade field errors (#1518) (defa358e)
+*  externalized component events (#1517) (a032cf2a)
+* **faro:**  faro log successful plugin load (#1529) (025ed256)
+
+##### New Features
+
+* **LineLimitScene:**
+  *  error message, invalidation state (#1537) (d978a797)
+  *  track max lines (#1530) (b82d9768)
+* **logs:**  expose line limit in all visualizations (#1527) (f107e0e7)
+
+##### Bug Fixes
+
+*  add tenant id to log-generator (#1522) (5225d621)
+
+
+## 1.0.26
+
+##### Chores
+
+* **@grafana/assistant:**  bump grafana/assistant sdk (#1514) (f23ba6d5)
+* **JSON:**  remove experimental banner (#1508) (37c843bc)
+* **playwright:**  run smoke tests for older grafana versions (#1479) (d803b75c)
+*  bump @grafana/create-plugin configuration to 5.25.7 (#1470) (45980e3f)
+
+##### Documentation Changes
+
+*  Add links to Explore (#1504) (83ea6090)
+
+##### New Features
+
+* **levels:**  allow custom options in level variable (#1509) (2d6bec3f)
+* **EmbeddedLogs:**  fix missing keyLabel in parsed line filters (#1500) (4a8678d7)
+*  grafana assistant expr based links (#1491) (92d76722)
+*  add data source image (#1485) (764cda81)
+
+##### Bug Fixes
+
+* **json:**  light icon buttons (#1513) (20cd5a2e)
+* **ServiceSelectionScene:**  roll back showing stored displayed fields (#1510) (9f99a2f1)
+* **links:**  show queryless button when no label selector is present (#1507) (9eeafdcc)
+* **table:**  make column menu keyboard accessible (#1490) (b177429a)
+* **ci:**  e2e fails (#1506) (d9e707f7)
+*  force reset metadata on embedded instantation (#1489) (b844998c)
+
+##### Tests
+
+* **e2e:**  add matrix test suite (#1480) (44ebd92f)
+
+
+## 1.0.25
+
+##### New Features
+
+* **fields:**  field name view (#1374) (79378a18)
+
+##### Bug Fixes
+
+* **assistant:**  move `getObservablePluginLinks` to `@grafana/assistant` package (#1477) (1cbbe3d9)
+*  prevent runtime error in Grafana 11.6 from crashing in Drilldown 1.0.24 (#1475) (a0b6fca7)
+
+
+## 1.0.24
+
+##### Chores
+
+* **performance:**  Sharding - always join on labels (#1472) (1e3bf13d)
+* **ci:**  turn on the argo workflows for releasing to prod without auto merge (#1445) (20c219ec)
+* **dep:**  update grafana dependencies for compatibility (#1451) (8f0dbdcd)
+* **JSON:**
+  *  replace inline svgs with background images (#1446) (c1796e05)
+  *  memoize to prevent uncessary re-renders (#1441) (531348cb)
+
+##### New Features
+
+* **Patterns:**  filter by level (#1459) (65a92234)
+* **assistant-context:**  provide datasource and labels as context to Assistant (#1458) (b085e756)
+
+##### Bug Fixes
+
+*  prevent runtime error (#1473) (adc8fc3c)
+* **shardQuerySplitting:**  stop when hitting max series (#1469) (0f3b1de9)
+* **ServiceSelection:**
+  *  header offset conflict with sidebar apps (#1468) (2e3f7edb)
+  *  reset service selection after changing data source (#1455) (d43f0180)
+* **fields:**  show max series notice in panel (#1467) (131b2502)
+* **serviceSelection:**  respect displayed fields if previously set (#1456) (8dbbceb9)
+* **Links:**  multi dashboard variable interpolation (#1454) (a5e4ed9c)
+
+##### Other Changes
+
+*  hide certain commit msgs (#1442) (7eb6b3e8)
+
+##### Tests
+
+* **e2e:**  fix e2e (#1448) (4cc60c31)
+
+
+## 1.0.23
+
+##### Chores
+
+*  prevent search undefined error (#1444) (96b3f2b4)
+*  track panels on activation (#1439) (68e9d7e9)
+*  add tracking on go to explore button used in embedded UI (#1438) (767477a5)
+*  refactor root navigation component out (#1402) (da7b3daf)
+* **analytics:**  on query event (#1440) (24bce571)
+* **deps:**  bump golang.org/x/oauth2 (#1434) (0c0789f9)
+* **JSON:**
+  *  refactor JSON methods (#1431) (2db009c6)
+  *  only calculate line filter matches if highlighting is enabled (#1416) (f8a1393f)
+
+##### New Features
+
+* **analytics:**  report viz init once (#1443) (b6f59ccc)
+* **assistant:**  add `Explain in Assistant` panel option (#1426) (4bb4a1be)
+* **table:**
+  *  column width estimator and toggle logsPanelControls (#1422) (12930739)
+  *  core table unification (#1354) (823926d7)
+*  implement ux feedback (#1429) (5238f67b)
+* **LogsPanel:**  exclude panels from interactions and add custom patterns key (#1432) (7d7ab85b)
+* **JSON:**
+  *  links (#1420) (0ae7cd2e)
+  *  hover & selected styles (#1418) (9d654c87)
+  *  share link to line (#1406) (4ab18e92)
+  *  Add detected_level button (#1407) (2bcce8f6)
+  *  add copy log text button (#1393) (9beae02c)
+  *  line wrap (#1388) (d24cc109)
+  *  line filter and syntax highlighting (#1382) (767f8c15)
+
+##### Bug Fixes
+
+* **ad-hoc filters:**  fix duplicate filters (#1430) (892c238b)
+* **JSON:**
+  *  tooltip copy not updating (#1415) (20da3bab)
+  *  selected buttons not showing active style (#1413) (28791c3b)
+  *  sort dataframe before transform (#1386) (8b51090c)
+* **LogsPanelScene:**  pass setDisplayedFields (#1421) (c77f0435)
+* **LogsPanel:**  visible range and panel improvements (#1410) (616ef849)
+* **links:**  interpolate expression and datasource variable (#1411) (b3840645)
+* **table:**  fix overflow with docked nav (#1403) (e51dcdcc)
+
+
+## 1.0.22
+
+##### Chores
+
+* **eslint:**  disable sort/object-properties, remove recommendations (#1392) (c7941852)
+*  bump @grafana/create-plugin configuration to 5.25.1 (#1365) (65e6e53d)
+*  whitelist grafana-plugins-platform-bot[bot] (#1383) (ac0f59d7)
+
+##### New Features
+
+*  enable Logs Drilldown link in Metrics Drilldown (#1389) (8fb4422e)
+* **LogsPanel:**  set details mode (#1391) (d1befe8c)
+
+##### Bug Fixes
+
+*  limit patterns to 500 (#1390) (e2abf9a7)
+
+
+## 1.0.21
+
+##### New Features
+
+* **JSON:**  support labels/metadata filtering in JSON viz (#1370) (2de9c052)
+* **Embbedding:**  open embedding API for default line filters (#1376) (0d866b88)
+* **patterns:**  allow disabling patterns in Logs Drilldown (#1361) (76bd7196)
+*  calculate sparsity on errored/partial data (#1358) (e3bcb5ac)
+
+##### Bug Fixes
+
+* **JSON:**  detected fields not always getting called on activation (#1368) (987874cc)
+*  dont run volume query when collapse (#1363) (f29bc32a)
+
+##### Other Changes
+
+*  Publish each commit to dev + ops, auto-merge dev and ops PRs (#1375) (a25eb8c6)
+
+
+## 1.0.20
+
+##### Chores
+
+* **gha:**  update ci to deploy ops with new argo workflows (#1349) (250c5444)
+
+##### New Features
+
+* **EmbeddedLogs:**  embedded logs url parameter namespace (#1353) (11340a2c)
+
+
+## 1.0.19
+
+##### Chores
+
+*  add bundle-types workflow (#1327) (ef3bc6df)
+
+##### New Features
+
+* **FieldsBreakdown:**  Show panels with errors (#1346) (7d0f70bc)
+* **FieldValues:**  add better max series limit error message (#1345) (7f1df4cd)
+
+##### Bug Fixes
+
+* **datasources:**  default datasources (#1348) (b0842eab)
+
+##### Refactors
+
+* **changelog:**  manually fix changelog (#1342) (63333a8e)
+
+##### Tests
+
+*  hopeful flake fix (21c05825)
+
+
+## 1.0.18
+
+##### Chores
+
+* **gha:**
+  *  id-token permission (#1338) (283b1fb2)
+  *  update ci to ci/cd job to auto deploy to dev (#1321) (a600310f)
+  *  github permissions are fun (#1314) (d650a4f1)
+  *  add proper permissions to format gh issues (#1312) (118774d3)
+  *  update deployment tools wf (#1297) (6ccbf550)
+* **deps:**  bump golang.org/x/net (#1326) (b43e2320)
+* **gh issues:**
+  *  formate issues with labels and project (#1291) (8e4777c1)
+  *  update issue templates (#1290) (ffe12ffb)
+
+##### New Features
+
+* **embedding:**
+  *  Embedded readonly filters (#1315) (43abb74d)
+  *  Embedded Service Scene Component (#1294) (bd4f5e36)
+* **LogsPanelScene:**  pass custom items to new panel (#1306) (3d011c63)
+*  add token to generator (#1305) (784f7764)
+
+##### Bug Fixes
+
+* **logs-panel:**  infinite scroll broken by double jsonFields interpolation (#1302) (97619800)
+* **JSON:**  add second json parser stage (#1301) (20b338dd)
+* **EmbeddedLogs:**  Prevent readonly filter removal (#1323) (39678dbe)
+
+## 1.0.17
 
 ##### Chores
 
@@ -13,7 +410,7 @@
 
 * **table:**  move sorting and remove initial sorting from table (#1284) (f0561406)
 
-#### 1.0.16
+## 1.0.16
 
 ##### Chores
 
@@ -31,7 +428,7 @@
 *  Add favorites docs to readme (#1277) (cd64dbfc)
 *  Dashboards > Visualizations (#1261) (216b9256)
 
-#### 1.0.15
+## 1.0.15
 
 ##### Chores
 
@@ -163,7 +560,6 @@
 
 - Make extensions compatibly with different Grafana versions (#1148) (e2c75d29)
 
-# Changelog
 
 View [releases](https://github.com/grafana/explore-logs/releases/) on GitHub for up-to-date changelog information.
 
