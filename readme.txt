@@ -11,6 +11,17 @@ git commit -m "commit_ime"
 git push -u origin master
 --> za ostale git clone git clone https://github.com/KrnjovsekNik/ReverseAI.git
 
+<b>PO GIT PULL MORAS KLICATI</b>
+docker compose down
+docker compose build --no-cache
+docker compose up
+<b>CE SE KAR NE DELA LAHKO NUKAS CELO STVAR IN SE ENKRAT</b>
+docker compose down -v
+docker system prune -af
+docker compose build --no-cache
+docker compose up
+
+
 moreš imet odprt docker app
 docker-compose up --build
 Da zaženeš kamer client:
@@ -28,6 +39,16 @@ git checkout main
 git pull origin main
 git merge nova-funkcionalnost
 git push origin main
+
+
+
+
+
+
+
+
+
+
 
 Vzpostavitev brezzicnega delovanja.
 
