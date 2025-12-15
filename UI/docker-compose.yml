@@ -77,7 +77,7 @@ services:
     build: ./video_producer
     command: >
       python video_mqtt_producer.py
-      --video /videos/demo2_video.mp4
+      --video /videos/demo3_video.mp4
       --broker mqtt
       --topic camera/image
       --loop

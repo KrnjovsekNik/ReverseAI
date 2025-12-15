@@ -20,5 +20,6 @@ COPY best.pt .
 COPY model_distance.pth .
 COPY model_distance2.pth .
 COPY best_int8_openvino_model/ ./best_int8_openvino_model/
+COPY best_int8_openvino_model1/ ./best_int8_openvino_model1/
 
 CMD ["python", "yolo_mqtt.py"]

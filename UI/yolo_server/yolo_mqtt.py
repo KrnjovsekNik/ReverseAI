@@ -24,12 +24,12 @@ recognized_vehicle = Counter("recognized_vehicle_total", "Skupno število razpoz
 recognized_others = Counter("recognized_others_total", "Skupno število razpoznanih ostalih objektov")
 
 
-model = YOLO("best_int8_openvino_model", task="detect")
+model = YOLO("best_int8_openvino_model1", task="detect")
 start_http_server(8000)
 
 last_frame_time = time.time()
 frame_count = 0
-conf_treshold = 0.5
+conf_treshold = 0.2
 
 class DistanceModel(nn.Module):
     def __init__(self):
