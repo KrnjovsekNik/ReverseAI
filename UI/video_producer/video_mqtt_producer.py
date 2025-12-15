@@ -5,7 +5,7 @@ import argparse
 import paho.mqtt.client as mqtt
 import os
 
-VIDEO = os.getenv("VIDEO", "/videos/test_video.mp4")
+VIDEO = os.getenv("VIDEO", "/videos/demo_video.mp4")
 FPS = float(os.getenv("FPS", "30"))
 BROKER = os.getenv("BROKER", "mqtt")
 
