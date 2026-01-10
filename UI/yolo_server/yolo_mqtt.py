@@ -28,7 +28,7 @@ recognized_vehicle = Counter("recognized_vehicle_total", "Skupno število razpoz
 recognized_others = Counter("recognized_others_total", "Skupno število razpoznanih ostalih objektov")
 
 
-model = YOLO("best_int8_openvino_model1", task="detect")
+model = YOLO("best_int8_openvino_model_8n_416", task="detect")
 start_http_server(8000)
 
 last_frame_time = time.time()

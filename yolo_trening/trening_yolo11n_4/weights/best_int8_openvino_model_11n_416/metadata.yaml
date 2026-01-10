@@ -1,0 +1,30 @@
+description: Ultralytics YOLO11n model trained on data.yaml
+author: Ultralytics
+date: '2026-01-10T22:35:32.074010'
+version: 8.3.237
+license: AGPL-3.0 License (https://ultralytics.com/license)
+docs: https://docs.ultralytics.com
+stride: 32
+task: detect
+batch: 1
+imgsz:
+- 416
+- 416
+names:
+  0: oseba_zelo_blizu
+  1: oseba_blizu
+  2: oseba_dalec
+  3: vozilo_zelo_blizu
+  4: vozilo_blizu
+  5: vozilo_dalec
+  6: ostalo_zelo_blizu
+  7: ostalo_blizu
+  8: ostalo_dalec
+args:
+  batch: 1
+  fraction: 1.0
+  half: false
+  int8: true
+  dynamic: false
+  nms: false
+channels: 3

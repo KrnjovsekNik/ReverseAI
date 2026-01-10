@@ -13,12 +13,12 @@ cache: false
 device: '0'
 workers: 4
 project: yolo_trening
-name: trening_yolo11_3
+name: trening_yolo11n_4
 exist_ok: true
 pretrained: true
 optimizer: Adam
 verbose: true
-seed: 42
+seed: 32
 deterministic: true
 single_cls: false
 rect: false
@@ -102,4 +102,4 @@ auto_augment: randaugment
 erasing: 0.4
 cfg: null
 tracker: botsort.yaml
-save_dir: yolo_trening\trening_yolo11_3
+save_dir: yolo_trening\trening_yolo11n_4
