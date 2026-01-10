@@ -53,7 +53,7 @@ conf_treshold = 0.2
 #######################################
 # MODELI (ne sprememb)
 #######################################
-model = YOLO("best_int8_openvino_model1", task="detect")
+model = YOLO("best_int8_openvino_model1", task="detect", verbose=False)
 start_http_server(8000)
 
 class DistanceModel(nn.Module):
@@ -160,7 +160,7 @@ def handle_frame(frame):
     vehicle_count = 0
     others_count = 0
 
-    results = model(frame)[0]
+    results = model(frame, verbose=False)[0]
     detections = []
 
     pil_image = Image.fromarray(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))

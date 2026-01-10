@@ -30,6 +30,8 @@ services:
   prometheus:
     image: prom/prometheus
     container_name: prometheus
+    logging:
+      driver: "none"
     ports:
       - "9090:9090"
     volumes:
@@ -42,6 +44,8 @@ services:
   grafana:
     image: grafana/grafana
     container_name: grafana
+    logging:
+      driver: "none"
     ports:
      - "3000:3000"
     volumes:
@@ -63,6 +67,8 @@ services:
       image: gcr.io/cadvisor/cadvisor:latest
       container_name: cadvisor
       privileged: true
+      logging:
+        driver: "none"
       ports:
         - "8080:8080"
       volumes:
