@@ -28,7 +28,7 @@ if fps <= 0:
     fps = 25  # fallback
 
 frame_interval = 1.0 / fps
-print(f"Video FPS: {fps:.2f}, interval: {frame_interval:.3f}s")
+#print(f"Video FPS: {fps:.2f}, interval: {frame_interval:.3f}s")
 
 next_frame_time = time.time()
 
@@ -47,7 +47,7 @@ while True:
     img_base64 = base64.b64encode(buffer).decode("utf-8")
 
     client.publish(args.topic, img_base64)
-    print(f"Video FPS: {fps:.2f}, Frame poslan")
+    #print(f"Video FPS: {fps:.2f}, Frame poslan")
 
     # --- FPS control ---
     next_frame_time += frame_interval
