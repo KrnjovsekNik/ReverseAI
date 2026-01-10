@@ -4,6 +4,7 @@ import time
 import argparse
 import paho.mqtt.client as mqtt
 import os
+'''
 
 VIDEO = os.getenv("VIDEO", "/videos/demo_video.mp4")
 FPS = float(os.getenv("FPS", "30"))
@@ -62,3 +63,5 @@ while True:
 cap.release()
 client.loop_stop()
 client.disconnect()
+
+'''

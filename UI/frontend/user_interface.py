@@ -1,242 +1,232 @@
-import tkinter as tk
-from PIL import Image, ImageTk, ImageDraw
-import cv2
-import numpy as np
+import sys
 import base64
-import threading
 import json
-import paho.mqtt.client as mqtt
+import threading
 import time
-import simpleaudio as sa
 
-alarm_active = False
-alarm_lock = threading.Lock()
-stop_threads = False
-video_width = 1280
-video_height = 720
+import numpy as np
+import cv2
+import paho.mqtt.client as mqtt
 
-frame_tk = None
-img_id = None
-last_pil_img = None
+from PySide6.QtCore import Qt, QThread, Signal, QRectF
+from PySide6.QtGui import QImage, QPainter, QColor, QFont, QBrush, QPen
+from PySide6.QtWidgets import QApplication, QWidget
 
-root = tk.Tk()
-root.title("ReverseAI")
-root.configure(bg="#e6f0ef")
-root.geometry(f"{video_width}x{video_height}")
-
-canvas = tk.Canvas(root, bg="#e6f0ef", highlightthickness=0)
-canvas.pack(fill=tk.BOTH, expand=True)
-
-text_id = canvas.create_text(5, 5, text="", fill="black", font=("Helvetica", 16, "bold"), anchor="nw")
-
-def resize(event):
-    canvas.config(width=event.width, height=event.height)
-    if last_pil_img:
-        danger_text = canvas.itemcget(text_id, "text")
-        color = canvas.itemcget(text_id, "fill")
-        is_danger = (color == "red")
-        display_frame(last_pil_img, danger_text, is_danger)
+# --------------------------------------------------
+# CONFIG
+# --------------------------------------------------
+MQTT_HOST = "localhost"
+MQTT_TOPIC = "camera/results"
 
 
-root.bind("<Configure>", resize)
+# --------------------------------------------------
+# MQTT WORKER (teče v threadu, UI dobi signal)
+# --------------------------------------------------
+class MqttWorker(QThread):
+    frame_signal = Signal(dict)
 
-# Global za ozadje teksta
-text_bg_img = None
-text_bg_id = None
-text_shadow_id = None
+    def __init__(self, host, topic):
+        super().__init__()
+        self.host = host
+        self.topic = topic
+        self.client = mqtt.Client()
+        self.running = True
 
-def create_rounded_rect_image(w, h, radius, fill_color, shadow_color, shadow_offset=2):
-    img = Image.new("RGBA", (w + shadow_offset, h + shadow_offset), (0, 0, 0, 0))
-    draw = ImageDraw.Draw(img)
+    def run(self):
+        def on_connect(client, userdata, flags, rc):
+            if rc == 0:
+                print("[MQTT] Povezan, subscribe na", self.topic)
+                client.subscribe(self.topic)
+            else:
+                print("[MQTT] Napaka pri povezavi:", rc)
 
-    # Shadow
-    shadow_box = (shadow_offset, shadow_offset, w + shadow_offset, h + shadow_offset)
-    draw.rounded_rectangle(shadow_box, radius=radius, fill=shadow_color)
+        def on_message(client, userdata, msg):
+            try:
+                data = json.loads(msg.payload.decode("utf-8"))
+                # Pošlji UI-ju
+                self.frame_signal.emit(data)
+            except Exception as e:
+                print("[MQTT] Napaka pri dekodiranju JSON:", e)
 
-    # Main box
-    main_box = (0, 0, w, h)
-    draw.rounded_rectangle(main_box, radius=radius, fill=fill_color)
+        self.client.on_connect = on_connect
+        self.client.on_message = on_message
 
-    return ImageTk.PhotoImage(img)
+        while self.running:
+            try:
+                print("[MQTT] Povezujem na", self.host)
+                self.client.connect(self.host, 1883, 60)
+                self.client.loop_forever()
+            except Exception as e:
+                print("[MQTT] Napaka, ponovno povezovanje čez 2s:", e)
+                time.sleep(2)
 
-def display_frame(pil_image, danger_text, is_danger=False):
-    global frame_tk, img_id, last_pil_img
-    global text_id, text_bg_id, text_bg_img
+    def stop(self):
+        self.running = False
+        try:
+            self.client.disconnect()
+        except:
+            pass
 
-    last_pil_img = pil_image
-    width = canvas.winfo_width()
-    height = canvas.winfo_height()
 
-    pil_image = pil_image.resize((width, height), Image.Resampling.LANCZOS)
-    frame_tk = ImageTk.PhotoImage(pil_image)
+# --------------------------------------------------
+# GLAVNI VIDEO WIDGET
+# --------------------------------------------------
+class VideoWidget(QWidget):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("ReverseAI")
+        self.setStyleSheet("background-color: #e6f0ef;")
+        self.resize(1280, 720)
 
-    if img_id is None:
-        img_id = canvas.create_image(0, 0, anchor=tk.NW, image=frame_tk)
-    else:
-        canvas.itemconfig(img_id, image=frame_tk)
+        # slika + tekst stanje
+        self.frame_rgb = None           # numpy array (H, W, 3)
+        self.qimage = None              # QImage – držimo referenco!
+        self.text = "Ni nevarnosti"
+        self.danger = False
 
-    # Barva teksta
-    text_color = "red" if is_danger else "black"
-    canvas.itemconfig(text_id, text=danger_text, fill=text_color, anchor="nw")
-    canvas.coords(text_id, 20 + 12, 20 + 8)
+        # font in barve
+        self.font = QFont("Helvetica", 20, QFont.Bold)
 
-    bbox = canvas.bbox(text_id)
-    if bbox:
-        x0, y0, x1, y1 = bbox
-        text_w = x1 - x0
-        text_h = y1 - y0
+    def update_from_result(self, result: dict):
+        """
+        Slot, ki ga kliče MQTT worker (v UI threadu, preko signala)
+        """
+        try:
+            img_b64 = result.get("image", None)
+            if not isinstance(img_b64, str):
+                print("[UI] Neveljaven ali manjkajoč 'image' field:", type(img_b64))
+                return
+
+            # base64 -> bytes
+            try:
+                img_bytes = base64.b64decode(img_b64)
+            except Exception as e:
+                print("[UI] base64 decode error:", e)
+                return
+
+            # bytes -> numpy -> cv2
+            buf = np.frombuffer(img_bytes, np.uint8)
+            if buf.size == 0:
+                print("[UI] Prazen JPEG buffer")
+                return
+
+            frame_bgr = cv2.imdecode(buf, cv2.IMREAD_COLOR)
+            if frame_bgr is None:
+                print("[UI] cv2.imdecode ni uspel (pokvarjen JPEG, len=", len(img_bytes), ")")
+                return
+
+            frame_rgb = cv2.cvtColor(frame_bgr, cv2.COLOR_BGR2RGB)
+            self.frame_rgb = frame_rgb
+
+            # pripravimo QImage in držimo referenco
+            h, w, ch = frame_rgb.shape
+            bytes_per_line = ch * w
+            self.qimage = QImage(frame_rgb.data, w, h, bytes_per_line, QImage.Format_RGB888)
+
+            # detections / text logika
+            detections = result.get("detections", [])
+            if not isinstance(detections, list):
+                detections = []
+
+            if len(detections) == 0:
+                self.text = "Ni nevarnosti"
+                self.danger = False
+            else:
+                # podobna logika kot prej – vzamemo "najbolj nevarno"
+                # privzeto prvi
+                det = detections[0]
+                label = det.get("class", "")
+                dist = det.get("distance_m", None)
+
+                if label.startswith("oseba"):
+                    if isinstance(dist, (int, float)):
+                        self.text = f"Oseba {dist:.2f} m"
+                    else:
+                        self.text = "Oseba"
+                elif label.startswith("vozilo"):
+                    self.text = "Vozilo"
+                elif label.startswith("ostalo"):
+                    self.text = "Nevarnost: Ostalo"
+                else:
+                    self.text = label or "Nevarnost"
+
+                self.danger = label.endswith("zelo_blizu")
+
+            # zahtevaj repaint
+            self.update()
+
+        except Exception as e:
+            print("[UI] Napaka v update_from_result:", e)
+
+    def paintEvent(self, event):
+        painter = QPainter(self)
+        painter.fillRect(self.rect(), QColor("#e6f0ef"))
+
+        if self.qimage is not None:
+            # video slika
+            widget_w = self.width()
+            widget_h = self.height()
+            scaled = self.qimage.scaled(widget_w, widget_h, Qt.KeepAspectRatio, Qt.SmoothTransformation)
+            x = (widget_w - scaled.width()) // 2
+            y = (widget_h - scaled.height()) // 2
+            painter.drawImage(x, y, scaled)
+
+        # tekst box
+        painter.setRenderHint(QPainter.Antialiasing)
+        painter.setFont(self.font)
+
+        # izračun širine/višine teksta
+        metrics = painter.fontMetrics()
+        tw = metrics.horizontalAdvance(self.text)
+        th = metrics.height()
+
         padding_x = 24
         padding_y = 16
-        radius = 6  # manj zaobljeni robovi
+        box_w = tw + padding_x
+        box_h = th + padding_y
 
-        box_w = text_w + padding_x
-        box_h = text_h + padding_y
+        x0 = 20
+        y0 = 20
 
-        text_bg_img = create_rounded_rect_image(
-            box_w, box_h,
-            radius=radius,
-            fill_color="#e6f0ef",
-            shadow_color="#cdd9d7",
-            shadow_offset=2
-        )
+        bg = QColor("#e6f0ef")
+        shadow = QColor("#cdd9d7")
+        text_color = QColor("red") if self.danger else QColor("black")
 
-        if text_bg_id is None:
-            text_bg_id = canvas.create_image(20, 20, anchor="nw", image=text_bg_img)
-        else:
-            canvas.itemconfig(text_bg_id, image=text_bg_img)
-            canvas.coords(text_bg_id, 20, 20)
+        # shadow
+        painter.setBrush(QBrush(shadow))
+        painter.setPen(Qt.NoPen)
+        painter.drawRoundedRect(QRectF(x0 + 2, y0 + 2, box_w, box_h), 6, 6)
 
-        # -- PRAVILEN layering:
-        canvas.tag_lower(text_bg_id, text_id)  # ozadje pod besedilo
-        canvas.tag_lower(img_id, text_bg_id)   # slika še nižje
+        # box
+        painter.setBrush(QBrush(bg))
+        painter.drawRoundedRect(QRectF(x0, y0, box_w, box_h), 6, 6)
 
-        canvas.image_ref = frame_tk
-        canvas.bg_image_ref = text_bg_img
-
-
-def on_closing():
-    global stop_threads
-    stop_threads = True
-    root.destroy()
-
-def play_alarm_pattern():
-    global alarm_active, stop_threads
-
-    try:
-        wave_obj = sa.WaveObject.from_wave_file("alarm.wav")
-        while not stop_threads:
-            if alarm_active:
-                play_obj = wave_obj.play()
-                time.sleep(0.5)
-            else:
-                time.sleep(0.1)
-    except Exception as e:
-        print("Napaka pri predvajanju zvoka:", e)
-
-min_padding = 100
-
-def process_and_display_result(result):
-    try:
-        img_bytes = base64.b64decode(result["image"])
-        img_array = np.frombuffer(img_bytes, dtype=np.uint8)
-        frame = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-        frame = cv2.resize(frame, (1280, 720))
-        frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-        pil_image = Image.fromarray(frame_rgb)
-        #for widget in danger_label_frame.winfo_children():
-        #    widget.destroy()
-
-        detections = result.get("detections", [])
-
-        persons = []
-        others = []
-
-        for det in detections:
-            label = det.get("class", "")
-            if label.startswith("oseba"):
-                persons.append(det)
-            else:
-                others.append(det)
-
-        def sort_by_danger(det):
-            label = det.get("class", "")
-            level = 3
-            if label.endswith("zelo_blizu"):
-                level = 1
-            elif label.endswith("blizu"):
-                level = 2
-            return level
-
-        persons.sort(key=lambda d: (sort_by_danger(d), d.get("distance_m", float("inf"))))
-        others.sort(key=sort_by_danger)
-        all_detections = persons + others
-
-        text = ""
-        if not all_detections:
-            #tk.Label(danger_label_frame, text="Ni nevarnosti", bg="#4b2994", fg="white",
-            #         font=("Helvetica", 12)).pack(anchor='w')
-            global alarm_active
-            alarm_active = False
-            text = "Ni nevarnosti"
-        
-        danger_found = False
-        if all_detections:
-            closest = all_detections[0]
-            label = closest.get("class", "unknown")
-            if label.startswith("oseba"):
-                text = f"Nevarnost: Oseba! {all_detections[0]['distance_m']}"
-            elif label.startswith("vozilo"):
-                text = "Nevarnost: Vozilo!"
-            elif label.startswith("ostalo"):
-                text = "Nevarnost: Ostalo!"
-            
-            if label.endswith("zelo_blizu"):
-                danger_found = True
+        # text
+        painter.setPen(QPen(text_color))
+        text_x = x0 + padding_x / 2
+        text_y = y0 + padding_y / 2 + th * 0.7
+        painter.drawText(text_x, text_y, self.text)
 
 
-        alarm_active=danger_found
-        display_frame(pil_image, text, danger_found)
-                
-    except Exception as e:
-        print("Napaka pri prikazu:", e)
+# --------------------------------------------------
+# GLAVNI APP WRAPPER
+# --------------------------------------------------
+class ReverseAIApp:
+    def __init__(self):
+        self.qt_app = QApplication(sys.argv)
+        self.win = VideoWidget()
 
-def on_message(client, userdata, msg):
-    try:
-        result = json.loads(msg.payload.decode("utf-8"))
-        process_and_display_result(result)
-    except Exception as e:
-        print("Napaka pri sprejemu MQTT sporočila:", e)
+        self.mqtt_worker = MqttWorker(MQTT_HOST, MQTT_TOPIC)
+        self.mqtt_worker.frame_signal.connect(self.win.update_from_result)
+        self.mqtt_worker.start()
 
-def mqtt_thread():
-    global stop_threads
+        self.win.show()
+        exit_code = self.qt_app.exec()
 
-    client = mqtt.Client()
-
-    def on_connect(client, userdata, flags, rc):
-        if rc == 0:
-            print("MQTT povezan")
-            client.subscribe("camera/results")
-        else:
-            print(f"MQTT napaka pri povezavi, rc={rc}")
-
-    def on_disconnect(client, userdata, rc):
-        print("MQTT povezava prekinjena")
-
-    client.on_connect = on_connect
-    client.on_disconnect = on_disconnect
-    client.on_message = on_message
-
-    while not stop_threads:
-        try:
-            print("Poskušam se povezati na MQTT ...")
-            client.connect("localhost", 1883, 60)
-            client.loop_forever()
-        except Exception as e:
-            print("MQTT ni na voljo, čakam ...", e)
-            time.sleep(2)
+        # cleanup
+        self.mqtt_worker.stop()
+        sys.exit(exit_code)
 
 
-threading.Thread(target=play_alarm_pattern, daemon=True).start()
-threading.Thread(target=mqtt_thread, daemon=True).start()
-root.protocol("WM_DELETE_WINDOW", on_closing)
-root.mainloop()
+if __name__ == "__main__":
+    ReverseAIApp()
