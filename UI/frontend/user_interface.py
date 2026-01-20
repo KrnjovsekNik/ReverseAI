@@ -1,7 +1,6 @@
 import sys
 import base64
 import json
-import threading
 import time
 
 import numpy as np
@@ -16,48 +15,58 @@ from PySide6.QtWidgets import QApplication, QWidget
 # CONFIG
 # --------------------------------------------------
 MQTT_HOST = "localhost"
-MQTT_TOPIC = "camera/results"
+MQTT_TOPIC_CAM = "camera/results"
+MQTT_TOPIC_TOF = "sensor/tof"
 
 
 # --------------------------------------------------
-# MQTT WORKER (teče v threadu, UI dobi signal)
+# MQTT WORKER
 # --------------------------------------------------
 class MqttWorker(QThread):
     frame_signal = Signal(dict)
+    tof_signal = Signal(int)
 
-    def __init__(self, host, topic):
+    def __init__(self, host, topic_cam, topic_tof):
         super().__init__()
         self.host = host
-        self.topic = topic
+        self.topic_cam = topic_cam
+        self.topic_tof = topic_tof
         self.client = mqtt.Client()
         self.running = True
 
     def run(self):
         def on_connect(client, userdata, flags, rc):
             if rc == 0:
-                print("[MQTT] Povezan, subscribe na", self.topic)
-                client.subscribe(self.topic)
+                print("[MQTT] Connected")
+                client.subscribe(self.topic_cam)
+                client.subscribe(self.topic_tof)
             else:
-                print("[MQTT] Napaka pri povezavi:", rc)
+                print("[MQTT] Connection failed:", rc)
 
         def on_message(client, userdata, msg):
             try:
-                data = json.loads(msg.payload.decode("utf-8"))
-                # Pošlji UI-ju
-                self.frame_signal.emit(data)
+                if msg.topic == self.topic_cam:
+                    data = json.loads(msg.payload.decode("utf-8"))
+                    self.frame_signal.emit(data)
+
+                elif msg.topic == self.topic_tof:
+                    tof_str = msg.payload.decode("utf-8").strip()
+                    if tof_str.isdigit():
+                        self.tof_signal.emit(int(tof_str))
+
             except Exception as e:
-                print("[MQTT] Napaka pri dekodiranju JSON:", e)
+                print("[MQTT] Message error:", e)
 
         self.client.on_connect = on_connect
         self.client.on_message = on_message
 
         while self.running:
             try:
-                print("[MQTT] Povezujem na", self.host)
+                print("[MQTT] Connecting to", self.host)
                 self.client.connect(self.host, 1883, 60)
                 self.client.loop_forever()
             except Exception as e:
-                print("[MQTT] Napaka, ponovno povezovanje čez 2s:", e)
+                print("[MQTT] Error, retry in 2s:", e)
                 time.sleep(2)
 
     def stop(self):
@@ -69,7 +78,7 @@ class MqttWorker(QThread):
 
 
 # --------------------------------------------------
-# GLAVNI VIDEO WIDGET
+# VIDEO WIDGET
 # --------------------------------------------------
 class VideoWidget(QWidget):
     def __init__(self):
@@ -78,52 +87,37 @@ class VideoWidget(QWidget):
         self.setStyleSheet("background-color: #e6f0ef;")
         self.resize(1280, 720)
 
-        # slika + tekst stanje
-        self.frame_rgb = None           # numpy array (H, W, 3)
-        self.qimage = None              # QImage – držimo referenco!
+        self.frame_rgb = None
+        self.qimage = None
         self.text = "Ni nevarnosti"
         self.danger = False
 
-        # font in barve
+        self.tof_mm = None
+
         self.font = QFont("Helvetica", 20, QFont.Bold)
 
     def update_from_result(self, result: dict):
-        """
-        Slot, ki ga kliče MQTT worker (v UI threadu, preko signala)
-        """
         try:
             img_b64 = result.get("image", None)
             if not isinstance(img_b64, str):
-                print("[UI] Neveljaven ali manjkajoč 'image' field:", type(img_b64))
                 return
 
-            # base64 -> bytes
-            try:
-                img_bytes = base64.b64decode(img_b64)
-            except Exception as e:
-                print("[UI] base64 decode error:", e)
-                return
-
-            # bytes -> numpy -> cv2
+            img_bytes = base64.b64decode(img_b64)
             buf = np.frombuffer(img_bytes, np.uint8)
             if buf.size == 0:
-                print("[UI] Prazen JPEG buffer")
                 return
 
             frame_bgr = cv2.imdecode(buf, cv2.IMREAD_COLOR)
             if frame_bgr is None:
-                print("[UI] cv2.imdecode ni uspel (pokvarjen JPEG, len=", len(img_bytes), ")")
                 return
 
             frame_rgb = cv2.cvtColor(frame_bgr, cv2.COLOR_BGR2RGB)
             self.frame_rgb = frame_rgb
 
-            # pripravimo QImage in držimo referenco
             h, w, ch = frame_rgb.shape
             bytes_per_line = ch * w
             self.qimage = QImage(frame_rgb.data, w, h, bytes_per_line, QImage.Format_RGB888)
 
-            # detections / text logika
             detections = result.get("detections", [])
             if not isinstance(detections, list):
                 detections = []
@@ -132,8 +126,6 @@ class VideoWidget(QWidget):
                 self.text = "Ni nevarnosti"
                 self.danger = False
             else:
-                # podobna logika kot prej – vzamemo "najbolj nevarno"
-                # privzeto prvi
                 det = detections[0]
                 label = det.get("class", "")
                 dist = det.get("distance_m", None)
@@ -152,18 +144,20 @@ class VideoWidget(QWidget):
 
                 self.danger = label.endswith("zelo_blizu")
 
-            # zahtevaj repaint
             self.update()
 
         except Exception as e:
-            print("[UI] Napaka v update_from_result:", e)
+            print("[UI] Error:", e)
+
+    def update_tof(self, mm: int):
+        self.tof_mm = mm
+        self.update()
 
     def paintEvent(self, event):
         painter = QPainter(self)
         painter.fillRect(self.rect(), QColor("#e6f0ef"))
 
         if self.qimage is not None:
-            # video slika
             widget_w = self.width()
             widget_h = self.height()
             scaled = self.qimage.scaled(widget_w, widget_h, Qt.KeepAspectRatio, Qt.SmoothTransformation)
@@ -171,11 +165,9 @@ class VideoWidget(QWidget):
             y = (widget_h - scaled.height()) // 2
             painter.drawImage(x, y, scaled)
 
-        # tekst box
         painter.setRenderHint(QPainter.Antialiasing)
         painter.setFont(self.font)
 
-        # izračun širine/višine teksta
         metrics = painter.fontMetrics()
         tw = metrics.horizontalAdvance(self.text)
         th = metrics.height()
@@ -183,7 +175,7 @@ class VideoWidget(QWidget):
         padding_x = 24
         padding_y = 16
         box_w = tw + padding_x
-        box_h = th + padding_y
+        box_h = th + padding_y + (th if self.tof_mm is not None else 0)
 
         x0 = 20
         y0 = 20
@@ -192,38 +184,39 @@ class VideoWidget(QWidget):
         shadow = QColor("#cdd9d7")
         text_color = QColor("red") if self.danger else QColor("black")
 
-        # shadow
         painter.setBrush(QBrush(shadow))
         painter.setPen(Qt.NoPen)
         painter.drawRoundedRect(QRectF(x0 + 2, y0 + 2, box_w, box_h), 6, 6)
 
-        # box
         painter.setBrush(QBrush(bg))
         painter.drawRoundedRect(QRectF(x0, y0, box_w, box_h), 6, 6)
 
-        # text
         painter.setPen(QPen(text_color))
         text_x = x0 + padding_x / 2
         text_y = y0 + padding_y / 2 + th * 0.7
         painter.drawText(text_x, text_y, self.text)
 
+        if self.tof_mm is not None:
+            tof_text = f"TOF: {self.tof_mm} mm"
+            painter.drawText(text_x, text_y + th + 10, tof_text)
+
 
 # --------------------------------------------------
-# GLAVNI APP WRAPPER
+# MAIN APP
 # --------------------------------------------------
 class ReverseAIApp:
     def __init__(self):
         self.qt_app = QApplication(sys.argv)
         self.win = VideoWidget()
 
-        self.mqtt_worker = MqttWorker(MQTT_HOST, MQTT_TOPIC)
+        self.mqtt_worker = MqttWorker(MQTT_HOST, MQTT_TOPIC_CAM, MQTT_TOPIC_TOF)
         self.mqtt_worker.frame_signal.connect(self.win.update_from_result)
+        self.mqtt_worker.tof_signal.connect(self.win.update_tof)
         self.mqtt_worker.start()
 
         self.win.show()
         exit_code = self.qt_app.exec()
 
-        # cleanup
         self.mqtt_worker.stop()
         sys.exit(exit_code)
 
