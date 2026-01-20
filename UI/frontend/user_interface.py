@@ -150,7 +150,15 @@ class VideoWidget(QWidget):
             print("[UI] Error:", e)
 
     def update_tof(self, mm: int):
-        self.tof_mm = mm
+        cm = mm / 10
+
+        if cm > 100:
+            self.tof_mm = None
+            self.tof_text = "N/A"
+        else:
+            self.tof_mm = cm
+            self.tof_text = f"{cm:.1f} cm"
+
         self.update()
 
     def paintEvent(self, event):
@@ -169,20 +177,29 @@ class VideoWidget(QWidget):
         painter.setFont(self.font)
 
         metrics = painter.fontMetrics()
-        tw = metrics.horizontalAdvance(self.text)
+
+        line1 = self.text
+        line2 = f"TOF: {self.tof_text}" if hasattr(self, "tof_text") else ""
+
+        w1 = metrics.horizontalAdvance(line1)
+        w2 = metrics.horizontalAdvance(line2) if line2 else 0
+
+        tw = max(w1, w2)
         th = metrics.height()
 
         padding_x = 24
         padding_y = 16
+
+        gap = 10 if line2 else 0
+
         box_w = tw + padding_x
-        box_h = th + padding_y + (th if self.tof_mm is not None else 0)
+        box_h = th + (th if line2 else 0) + gap + padding_y
 
         x0 = 20
         y0 = 20
 
         bg = QColor("#e6f0ef")
         shadow = QColor("#cdd9d7")
-        text_color = QColor("red") if self.danger else QColor("black")
 
         painter.setBrush(QBrush(shadow))
         painter.setPen(Qt.NoPen)
@@ -191,14 +208,19 @@ class VideoWidget(QWidget):
         painter.setBrush(QBrush(bg))
         painter.drawRoundedRect(QRectF(x0, y0, box_w, box_h), 6, 6)
 
-        painter.setPen(QPen(text_color))
         text_x = x0 + padding_x / 2
         text_y = y0 + padding_y / 2 + th * 0.7
+        painter.setPen(QPen(QColor("red") if self.danger else QColor("black")))
         painter.drawText(text_x, text_y, self.text)
 
-        if self.tof_mm is not None:
-            tof_text = f"TOF: {self.tof_mm} mm"
-            painter.drawText(text_x, text_y + th + 10, tof_text)
+        if hasattr(self, "tof_text"):
+            tof_color = QColor("black")
+
+            if isinstance(self.tof_mm, (int, float)) and self.tof_mm < 50:
+                tof_color = QColor("red")
+
+            painter.setPen(QPen(tof_color))
+            painter.drawText(text_x, text_y + th + gap, f"TOF: {self.tof_text}")
 
 
 # --------------------------------------------------
